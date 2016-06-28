@@ -1,0 +1,400 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		646F16481D183D8900D3EF81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646F16471D183D8900D3EF81 /* AppDelegate.swift */; };
+		646F164A1D183D8900D3EF81 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646F16491D183D8900D3EF81 /* ViewController.swift */; };
+		646F164C1D183D8900D3EF81 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 646F164B1D183D8900D3EF81 /* Assets.xcassets */; };
+		646F164F1D183D8900D3EF81 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 646F164D1D183D8900D3EF81 /* Main.storyboard */; };
+		646F165A1D183D8900D3EF81 /* MegalomediaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646F16591D183D8900D3EF81 /* MegalomediaTests.swift */; };
+		64BA452D1D1B102800B49B27 /* PreferenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BA452C1D1B102800B49B27 /* PreferenceView.swift */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		646F16561D183D8900D3EF81 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 646F163C1D183D8900D3EF81 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 646F16431D183D8900D3EF81;
+			remoteInfo = Megalomedia;
+		};
+/* End PBXContainerItemProxy section */
+
+/* Begin PBXFileReference section */
+		646F16441D183D8900D3EF81 /* Megalomedia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Megalomedia.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		646F16471D183D8900D3EF81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		646F16491D183D8900D3EF81 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		646F164B1D183D8900D3EF81 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		646F164E1D183D8900D3EF81 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
+		646F16501D183D8900D3EF81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		646F16551D183D8900D3EF81 /* MegalomediaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MegalomediaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		646F16591D183D8900D3EF81 /* MegalomediaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MegalomediaTests.swift; sourceTree = "<group>"; };
+		646F165B1D183D8900D3EF81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		64BA452C1D1B102800B49B27 /* PreferenceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceView.swift; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		646F16411D183D8900D3EF81 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		646F16521D183D8900D3EF81 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		646F163B1D183D8900D3EF81 = {
+			isa = PBXGroup;
+			children = (
+				646F16461D183D8900D3EF81 /* Megalomedia */,
+				646F16581D183D8900D3EF81 /* MegalomediaTests */,
+				646F16451D183D8900D3EF81 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		646F16451D183D8900D3EF81 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				646F16441D183D8900D3EF81 /* Megalomedia.app */,
+				646F16551D183D8900D3EF81 /* MegalomediaTests.xctest */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		646F16461D183D8900D3EF81 /* Megalomedia */ = {
+			isa = PBXGroup;
+			children = (
+				646F16471D183D8900D3EF81 /* AppDelegate.swift */,
+				646F16491D183D8900D3EF81 /* ViewController.swift */,
+				64BA452C1D1B102800B49B27 /* PreferenceView.swift */,
+				646F164B1D183D8900D3EF81 /* Assets.xcassets */,
+				646F164D1D183D8900D3EF81 /* Main.storyboard */,
+				646F16501D183D8900D3EF81 /* Info.plist */,
+			);
+			path = Megalomedia;
+			sourceTree = "<group>";
+		};
+		646F16581D183D8900D3EF81 /* MegalomediaTests */ = {
+			isa = PBXGroup;
+			children = (
+				646F16591D183D8900D3EF81 /* MegalomediaTests.swift */,
+				646F165B1D183D8900D3EF81 /* Info.plist */,
+			);
+			path = MegalomediaTests;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		646F16431D183D8900D3EF81 /* Megalomedia */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 646F165E1D183D8900D3EF81 /* Build configuration list for PBXNativeTarget "Megalomedia" */;
+			buildPhases = (
+				646F16401D183D8900D3EF81 /* Sources */,
+				646F16411D183D8900D3EF81 /* Frameworks */,
+				646F16421D183D8900D3EF81 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = Megalomedia;
+			productName = Megalomedia;
+			productReference = 646F16441D183D8900D3EF81 /* Megalomedia.app */;
+			productType = "com.apple.product-type.application";
+		};
+		646F16541D183D8900D3EF81 /* MegalomediaTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 646F16611D183D8900D3EF81 /* Build configuration list for PBXNativeTarget "MegalomediaTests" */;
+			buildPhases = (
+				646F16511D183D8900D3EF81 /* Sources */,
+				646F16521D183D8900D3EF81 /* Frameworks */,
+				646F16531D183D8900D3EF81 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				646F16571D183D8900D3EF81 /* PBXTargetDependency */,
+			);
+			name = MegalomediaTests;
+			productName = MegalomediaTests;
+			productReference = 646F16551D183D8900D3EF81 /* MegalomediaTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		646F163C1D183D8900D3EF81 /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastSwiftUpdateCheck = 0730;
+				LastUpgradeCheck = 0730;
+				ORGANIZATIONNAME = "Justin Shi";
+				TargetAttributes = {
+					646F16431D183D8900D3EF81 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
+					646F16541D183D8900D3EF81 = {
+						CreatedOnToolsVersion = 7.3.1;
+						TestTargetID = 646F16431D183D8900D3EF81;
+					};
+				};
+			};
+			buildConfigurationList = 646F163F1D183D8900D3EF81 /* Build configuration list for PBXProject "Megalomedia" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+				Base,
+			);
+			mainGroup = 646F163B1D183D8900D3EF81;
+			productRefGroup = 646F16451D183D8900D3EF81 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				646F16431D183D8900D3EF81 /* Megalomedia */,
+				646F16541D183D8900D3EF81 /* MegalomediaTests */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		646F16421D183D8900D3EF81 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				646F164C1D183D8900D3EF81 /* Assets.xcassets in Resources */,
+				646F164F1D183D8900D3EF81 /* Main.storyboard in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		646F16531D183D8900D3EF81 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		646F16401D183D8900D3EF81 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				646F164A1D183D8900D3EF81 /* ViewController.swift in Sources */,
+				646F16481D183D8900D3EF81 /* AppDelegate.swift in Sources */,
+				64BA452D1D1B102800B49B27 /* PreferenceView.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		646F16511D183D8900D3EF81 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				646F165A1D183D8900D3EF81 /* MegalomediaTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		646F16571D183D8900D3EF81 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 646F16431D183D8900D3EF81 /* Megalomedia */;
+			targetProxy = 646F16561D183D8900D3EF81 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
+/* Begin PBXVariantGroup section */
+		646F164D1D183D8900D3EF81 /* Main.storyboard */ = {
+			isa = PBXVariantGroup;
+			children = (
+				646F164E1D183D8900D3EF81 /* Base */,
+			);
+			name = Main.storyboard;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		646F165C1D183D8900D3EF81 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = macosx;
+				SWIFT_OPTIMIZATION_LEVEL = "-Onone";
+			};
+			name = Debug;
+		};
+		646F165D1D183D8900D3EF81 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ANALYZER_NONNULL = YES;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "-";
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				MACOSX_DEPLOYMENT_TARGET = 10.11;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = macosx;
+			};
+			name = Release;
+		};
+		646F165F1D183D8900D3EF81 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Megalomedia/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.justinshi.Megalomedia;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Debug;
+		};
+		646F16601D183D8900D3EF81 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = Megalomedia/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.justinshi.Megalomedia;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+			};
+			name = Release;
+		};
+		646F16621D183D8900D3EF81 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = MegalomediaTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.justinshi.MegalomediaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Megalomedia.app/Contents/MacOS/Megalomedia";
+			};
+			name = Debug;
+		};
+		646F16631D183D8900D3EF81 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = MegalomediaTests/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks @loader_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.justinshi.MegalomediaTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Megalomedia.app/Contents/MacOS/Megalomedia";
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		646F163F1D183D8900D3EF81 /* Build configuration list for PBXProject "Megalomedia" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				646F165C1D183D8900D3EF81 /* Debug */,
+				646F165D1D183D8900D3EF81 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		646F165E1D183D8900D3EF81 /* Build configuration list for PBXNativeTarget "Megalomedia" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				646F165F1D183D8900D3EF81 /* Debug */,
+				646F16601D183D8900D3EF81 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		646F16611D183D8900D3EF81 /* Build configuration list for PBXNativeTarget "MegalomediaTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				646F16621D183D8900D3EF81 /* Debug */,
+				646F16631D183D8900D3EF81 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 646F163C1D183D8900D3EF81 /* Project object */;
+}
