@@ -24,6 +24,20 @@ class ViewController: NSViewController, NSWindowDelegate {
     // Dictionary containing app name and tuple with associated button, Bool determining if currently picking new shortcut, button label, and shortcut keycode
     var appDict = [String: (button: NSButton, picking: Bool, label: String, keycode: UInt16?)]()
     
+    @IBAction func clearShortcut(sender: NSButton) {
+        for (name, tuple) in appDict {
+            if name == sender.identifier {
+                tuple.button.title = "Pick Shortcut"
+                appDict[name] = (tuple.button, false, "Pick Shortcut", nil)
+                let defaults = NSUserDefaults.standardUserDefaults()
+                defaults.setObject(nil, forKey: name + "_label")
+                defaults.setInteger(-1, forKey: name + "_keycode")
+                defaults.synchronize()
+                return
+            }
+        }
+    }
+    
     // Activates picking new shortcut state for app
     @IBAction func picking(sender: NSButton) {
         for (name, tuple) in appDict {
