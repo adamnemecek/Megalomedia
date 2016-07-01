@@ -24,6 +24,7 @@ class ViewController: NSViewController, NSWindowDelegate {
     // Dictionary containing app name and tuple with associated button, Bool determining if currently picking new shortcut, button label, and shortcut keycode
     var appDict = [String: (button: NSButton, picking: Bool, label: String, keycode: UInt16?)]()
     
+    // Clears shortcuts
     @IBAction func clearShortcut(sender: NSButton) {
         for (name, tuple) in appDict {
             if name == sender.identifier {
