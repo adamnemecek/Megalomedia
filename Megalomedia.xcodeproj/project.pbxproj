@@ -14,6 +14,7 @@
 		646F164F1D183D8900D3EF81 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 646F164D1D183D8900D3EF81 /* Main.storyboard */; };
 		646F165A1D183D8900D3EF81 /* MegalomediaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646F16591D183D8900D3EF81 /* MegalomediaTests.swift */; };
 		64BA452D1D1B102800B49B27 /* PreferenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BA452C1D1B102800B49B27 /* PreferenceView.swift */; };
+		64C2F6AB1D2C107E006A8532 /* YouTubePlayPause.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 64C2F6AA1D2C107E006A8532 /* YouTubePlayPause.scpt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -38,6 +39,7 @@
 		646F16591D183D8900D3EF81 /* MegalomediaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MegalomediaTests.swift; sourceTree = "<group>"; };
 		646F165B1D183D8900D3EF81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		64BA452C1D1B102800B49B27 /* PreferenceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceView.swift; sourceTree = "<group>"; };
+		64C2F6AA1D2C107E006A8532 /* YouTubePlayPause.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = YouTubePlayPause.scpt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -79,6 +81,7 @@
 		646F16461D183D8900D3EF81 /* Megalomedia */ = {
 			isa = PBXGroup;
 			children = (
+				64C2F6AA1D2C107E006A8532 /* YouTubePlayPause.scpt */,
 				646F16471D183D8900D3EF81 /* AppDelegate.swift */,
 				646F16491D183D8900D3EF81 /* ViewController.swift */,
 				64BA452C1D1B102800B49B27 /* PreferenceView.swift */,
@@ -182,6 +185,7 @@
 			files = (
 				646F164C1D183D8900D3EF81 /* Assets.xcassets in Resources */,
 				6400D0F61D280B4500B219CD /* AppPlayPause.scpt in Resources */,
+				64C2F6AB1D2C107E006A8532 /* YouTubePlayPause.scpt in Resources */,
 				646F164F1D183D8900D3EF81 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
