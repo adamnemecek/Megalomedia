@@ -13,8 +13,9 @@ import Carbon
 class ViewController: NSViewController, NSWindowDelegate {
 
     // Outlets for buttons for choosing new shortcuts
+    @IBOutlet weak var youTubeButton: NSButton!
     @IBOutlet weak var iTunesButton: NSButton!
-    @IBOutlet weak var vLCButton: NSButton!
+    @IBOutlet weak var vlcButton: NSButton!
     @IBOutlet weak var spotifyButton: NSButton!
     
     // Font and paragraph style
@@ -75,19 +76,30 @@ class ViewController: NSViewController, NSWindowDelegate {
         // AppleScript for pausing players
         for (name, tuple) in appDict {
             if theEvent.keyCode == tuple.keycode {
-                let scriptSource = "if application \"\(name)\" is running then\n"
-                    + "if \"\(name)\" is equal to \"Spotify\" or \"\(name)\" is equal to \"iTunes\" then\n"
-                    + "tell application \"\(name)\"\n"
-                    + "playpause\n"
-                    + "end tell\n"
-                    + "else\n"
-                    + "tell application \"\(name)\"\n"
-                    + "play\n"
-                    + "end tell\n"
-                    + "end if\n"
-                    + "end if"
-                let script: NSAppleScript? = NSAppleScript(source: scriptSource)
-                script!.executeAndReturnError(nil)
+                
+                // Decide to execute AppleScript for app players or web players
+                if name == "YouTube" {
+                    let path = NSBundle.mainBundle().pathForResource("YouTubePlayPause", ofType: "scpt")
+                    let url = NSURL(fileURLWithPath: path!)
+                    let appleScript = NSAppleScript(contentsOfURL: url, error: nil)
+                    appleScript!.executeAndReturnError(nil)
+                    
+                }
+                else {
+                    let path = NSBundle.mainBundle().pathForResource("AppPlayPause", ofType: "scpt")
+                    let url = NSURL(fileURLWithPath: path!)
+                    let appleScript = NSAppleScript(contentsOfURL: url, error: nil)
+                    let parameter = NSAppleEventDescriptor(string: name)
+                    let parameterList = NSAppleEventDescriptor.listDescriptor()
+                    parameterList.insertDescriptor(parameter, atIndex: 1)
+                    var psn = ProcessSerialNumber(highLongOfPSN: 0, lowLongOfPSN: UInt32(kCurrentProcess))
+                    let target = NSAppleEventDescriptor(descriptorType: DescType(typeProcessSerialNumber), bytes: &psn, length: sizeof(ProcessSerialNumber))
+                    let handler = NSAppleEventDescriptor(string: "play_pause_app")
+                    let event = NSAppleEventDescriptor.appleEventWithEventClass(AEEventClass(kASAppleScriptSuite), eventID: AEEventID(kASSubroutineEvent), targetDescriptor: target, returnID: AEReturnID(kAutoGenerateReturnID), transactionID: AETransactionID(kAnyTransactionID))
+                    event.setParamDescriptor(handler, forKeyword: AEKeyword(keyASSubroutineName))
+                    event.setParamDescriptor(parameterList, forKeyword: AEKeyword(keyDirectObject))
+                    appleScript!.executeAppleEvent(event, error: nil)
+                }
             }
         }
     }
@@ -98,8 +110,9 @@ class ViewController: NSViewController, NSWindowDelegate {
         // Set button text style and add app entries to dictionary
         paragraphStyle.alignment = .Center
         appDict["Spotify"] = (spotifyButton, false, "Pick Shortcut", nil)
-        appDict["VLC"] = (vLCButton, false, "Pick Shortcut", nil)
+        appDict["VLC"] = (vlcButton, false, "Pick Shortcut", nil)
         appDict["iTunes"] = (iTunesButton, false, "Pick Shortcut", nil)
+        appDict["YouTube"] = (youTubeButton, false, "Pick Shortcut", nil)
         
         // In case user had preferences saved previously, load shorcuts
         let defaults = NSUserDefaults.standardUserDefaults()
