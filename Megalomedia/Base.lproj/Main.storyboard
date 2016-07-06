@@ -685,7 +685,7 @@
                                 </connections>
                             </button>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ImN-i7-gFO">
-                                <rect key="frame" x="82" y="242" width="48" height="48"/>
+                                <rect key="frame" x="64" y="242" width="48" height="48"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Spotify" id="2VH-Yw-NBv"/>
                             </imageView>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="7o9-ET-EyX">
@@ -693,7 +693,7 @@
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="VLC" id="Nk8-Bg-cE2"/>
                             </imageView>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="RIj-xY-jib">
-                                <rect key="frame" x="32" y="195" width="148" height="32"/>
+                                <rect key="frame" x="14" y="195" width="148" height="32"/>
                                 <buttonCell key="cell" type="push" title="Pick Shortcut" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="BlN-6w-Xrq">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -703,7 +703,7 @@
                                 </connections>
                             </button>
                             <button identifier="Spotify" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B2A-3Q-JVU">
-                                <rect key="frame" x="32" y="162" width="60" height="32"/>
+                                <rect key="frame" x="14" y="162" width="60" height="32"/>
                                 <buttonCell key="cell" type="push" title="Clear" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="P3h-ML-cJp">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -723,11 +723,11 @@
                                 </connections>
                             </button>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ijz-DA-N0B">
-                                <rect key="frame" x="393" y="235" width="48" height="48"/>
+                                <rect key="frame" x="414" y="242" width="48" height="48"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="iTunes" id="7Yz-Fk-4kV"/>
                             </imageView>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Uaf-2T-61z">
-                                <rect key="frame" x="346" y="194" width="148" height="32"/>
+                                <rect key="frame" x="364" y="195" width="148" height="32"/>
                                 <buttonCell key="cell" type="push" title="Pick Shortcut" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="x6j-Wu-0cr">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -737,7 +737,7 @@
                                 </connections>
                             </button>
                             <button identifier="iTunes" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CrM-tL-qut">
-                                <rect key="frame" x="346" y="162" width="60" height="32"/>
+                                <rect key="frame" x="364" y="162" width="60" height="32"/>
                                 <buttonCell key="cell" type="push" title="Clear" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="MUr-dl-5rc">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -746,12 +746,8 @@
                                     <action selector="clearShortcut:" target="XfG-lQ-9wD" id="UzE-WU-MTe"/>
                                 </connections>
                             </button>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zzZ-bG-dLF">
-                                <rect key="frame" x="82" y="93" width="48" height="48"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="YouTube" id="acU-hd-FUn"/>
-                            </imageView>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aWd-fR-ch5">
-                                <rect key="frame" x="32" y="46" width="148" height="32"/>
+                                <rect key="frame" x="14" y="46" width="148" height="32"/>
                                 <buttonCell key="cell" type="push" title="Pick Shortcut" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Y9B-Pd-tYx">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -761,7 +757,7 @@
                                 </connections>
                             </button>
                             <button identifier="YouTube" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gV7-9G-ji9">
-                                <rect key="frame" x="32" y="13" width="60" height="32"/>
+                                <rect key="frame" x="14" y="13" width="60" height="32"/>
                                 <buttonCell key="cell" type="push" title="Clear" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="g7N-hT-Jke">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -770,10 +766,39 @@
                                     <action selector="clearShortcut:" target="XfG-lQ-9wD" id="ZIX-lP-bpx"/>
                                 </connections>
                             </button>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CT0-x6-fhY">
+                                <rect key="frame" x="239" y="93" width="48" height="48"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="SoundCloud" id="8HL-0v-iMW"/>
+                            </imageView>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="J1Z-gU-Uam">
+                                <rect key="frame" x="189" y="46" width="148" height="32"/>
+                                <buttonCell key="cell" type="push" title="Pick Shortcut" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="d7O-zC-ORR">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="picking:" target="XfG-lQ-9wD" id="vgZ-NS-pjT"/>
+                                </connections>
+                            </button>
+                            <button identifier="SoundCloud" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KSu-Tv-439">
+                                <rect key="frame" x="189" y="13" width="60" height="32"/>
+                                <buttonCell key="cell" type="push" title="Clear" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ys6-0u-RRg">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="clearShortcut:" target="XfG-lQ-9wD" id="KM8-bX-xuS"/>
+                                </connections>
+                            </button>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zzZ-bG-dLF">
+                                <rect key="frame" x="64" y="93" width="48" height="48"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="YouTube" id="acU-hd-FUn"/>
+                            </imageView>
                         </subviews>
                     </view>
                     <connections>
                         <outlet property="iTunesButton" destination="Uaf-2T-61z" id="JVH-cl-K1L"/>
+                        <outlet property="soundCloudButton" destination="J1Z-gU-Uam" id="aI7-E8-Hxw"/>
                         <outlet property="spotifyButton" destination="RIj-xY-jib" id="evz-KA-9x2"/>
                         <outlet property="vlcButton" destination="Sct-EQ-jal" id="C5N-Nc-nmL"/>
                         <outlet property="youTubeButton" destination="aWd-fR-ch5" id="4pX-GN-Llh"/>
@@ -784,6 +809,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="SoundCloud" width="240" height="120"/>
         <image name="Spotify" width="170.16000366210938" height="170.16000366210938"/>
         <image name="VLC" width="128" height="128"/>
         <image name="YouTube" width="1024" height="721"/>

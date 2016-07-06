@@ -13,11 +13,15 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     
     let storyboard = NSStoryboard(name: "Main", bundle: nil)
     
+    // App status bar icon
     let statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(NSSquareStatusItemLength)
     
+    // Controller for preferences window
     var controller: NSWindowController?
     
     func applicationDidFinishLaunching(aNotification: NSNotification) {
+        
+        // Instantiate controller, set delegate for window (to handle window closing actions), set status bar and menu items
         self.controller = self.storyboard.instantiateControllerWithIdentifier("preferenceWindowController") as? NSWindowController
         self.controller!.window!.delegate = self
         if let button = self.statusItem.button {
@@ -39,6 +43,8 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     }
     
     func windowShouldClose(sender: AnyObject) -> Bool {
+        
+        // When window is closed, switch focus to next application (gets rid of "funk" noises on keypresses)
         NSApplication.sharedApplication().hide(sender)
         return true
     }

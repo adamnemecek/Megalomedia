@@ -10,9 +10,10 @@ import Cocoa
 import Foundation
 import Carbon
 
-class ViewController: NSViewController, NSWindowDelegate {
+class ViewController: NSViewController {
 
     // Outlets for buttons for choosing new shortcuts
+    @IBOutlet weak var soundCloudButton: NSButton!
     @IBOutlet weak var youTubeButton: NSButton!
     @IBOutlet weak var iTunesButton: NSButton!
     @IBOutlet weak var vlcButton: NSButton!
@@ -73,33 +74,32 @@ class ViewController: NSViewController, NSWindowDelegate {
             }
         }
         
-        // AppleScript for pausing players
+        // AppleScripts for pausing players
         for (name, tuple) in appDict {
             if theEvent.keyCode == tuple.keycode {
+                var path: String?
+                var handler: NSAppleEventDescriptor
                 
                 // Decide to execute AppleScript for app players or web players
-                if name == "YouTube" {
-                    let path = NSBundle.mainBundle().pathForResource("YouTubePlayPause", ofType: "scpt")
-                    let url = NSURL(fileURLWithPath: path!)
-                    let appleScript = NSAppleScript(contentsOfURL: url, error: nil)
-                    appleScript!.executeAndReturnError(nil)
-                    
+                if name == "YouTube" || name == "SoundCloud" {
+                    path = NSBundle.mainBundle().pathForResource("YouTubePlayPause", ofType: "scpt")
+                    handler = NSAppleEventDescriptor(string: "play_pause_web")
                 }
                 else {
-                    let path = NSBundle.mainBundle().pathForResource("AppPlayPause", ofType: "scpt")
-                    let url = NSURL(fileURLWithPath: path!)
-                    let appleScript = NSAppleScript(contentsOfURL: url, error: nil)
-                    let parameter = NSAppleEventDescriptor(string: name)
-                    let parameterList = NSAppleEventDescriptor.listDescriptor()
-                    parameterList.insertDescriptor(parameter, atIndex: 1)
-                    var psn = ProcessSerialNumber(highLongOfPSN: 0, lowLongOfPSN: UInt32(kCurrentProcess))
-                    let target = NSAppleEventDescriptor(descriptorType: DescType(typeProcessSerialNumber), bytes: &psn, length: sizeof(ProcessSerialNumber))
-                    let handler = NSAppleEventDescriptor(string: "play_pause_app")
-                    let event = NSAppleEventDescriptor.appleEventWithEventClass(AEEventClass(kASAppleScriptSuite), eventID: AEEventID(kASSubroutineEvent), targetDescriptor: target, returnID: AEReturnID(kAutoGenerateReturnID), transactionID: AETransactionID(kAnyTransactionID))
-                    event.setParamDescriptor(handler, forKeyword: AEKeyword(keyASSubroutineName))
-                    event.setParamDescriptor(parameterList, forKeyword: AEKeyword(keyDirectObject))
-                    appleScript!.executeAppleEvent(event, error: nil)
+                    path = NSBundle.mainBundle().pathForResource("AppPlayPause", ofType: "scpt")
+                    handler = NSAppleEventDescriptor(string: "play_pause_app")
                 }
+                let url = NSURL(fileURLWithPath: path!)
+                let appleScript = NSAppleScript(contentsOfURL: url, error: nil)
+                let parameter = NSAppleEventDescriptor(string: name)
+                let parameterList = NSAppleEventDescriptor.listDescriptor()
+                parameterList.insertDescriptor(parameter, atIndex: 1)
+                var psn = ProcessSerialNumber(highLongOfPSN: 0, lowLongOfPSN: UInt32(kCurrentProcess))
+                let target = NSAppleEventDescriptor(descriptorType: DescType(typeProcessSerialNumber), bytes: &psn, length: sizeof(ProcessSerialNumber))
+                let event = NSAppleEventDescriptor.appleEventWithEventClass(AEEventClass(kASAppleScriptSuite), eventID: AEEventID(kASSubroutineEvent), targetDescriptor: target, returnID: AEReturnID(kAutoGenerateReturnID), transactionID: AETransactionID(kAnyTransactionID))
+                event.setParamDescriptor(handler, forKeyword: AEKeyword(keyASSubroutineName))
+                event.setParamDescriptor(parameterList, forKeyword: AEKeyword(keyDirectObject))
+                appleScript!.executeAppleEvent(event, error: nil)
             }
         }
     }
@@ -113,6 +113,7 @@ class ViewController: NSViewController, NSWindowDelegate {
         appDict["VLC"] = (vlcButton, false, "Pick Shortcut", nil)
         appDict["iTunes"] = (iTunesButton, false, "Pick Shortcut", nil)
         appDict["YouTube"] = (youTubeButton, false, "Pick Shortcut", nil)
+        appDict["SoundCloud"] = (soundCloudButton, false, "Pick Shortcut", nil)
         
         // In case user had preferences saved previously, load shorcuts
         let defaults = NSUserDefaults.standardUserDefaults()
