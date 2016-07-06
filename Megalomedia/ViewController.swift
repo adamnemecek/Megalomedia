@@ -82,7 +82,7 @@ class ViewController: NSViewController {
                 
                 // Decide to execute AppleScript for app players or web players
                 if name == "YouTube" || name == "SoundCloud" {
-                    path = NSBundle.mainBundle().pathForResource("YouTubePlayPause", ofType: "scpt")
+                    path = NSBundle.mainBundle().pathForResource("WebPlayPause", ofType: "scpt")
                     handler = NSAppleEventDescriptor(string: "play_pause_web")
                 }
                 else {
