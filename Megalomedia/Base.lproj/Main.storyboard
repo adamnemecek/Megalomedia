@@ -746,6 +746,10 @@
                                     <action selector="clearShortcut:" target="XfG-lQ-9wD" id="UzE-WU-MTe"/>
                                 </connections>
                             </button>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zzZ-bG-dLF">
+                                <rect key="frame" x="64" y="93" width="48" height="48"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="YouTube" id="acU-hd-FUn"/>
+                            </imageView>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aWd-fR-ch5">
                                 <rect key="frame" x="14" y="46" width="148" height="32"/>
                                 <buttonCell key="cell" type="push" title="Pick Shortcut" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Y9B-Pd-tYx">
@@ -780,7 +784,7 @@
                                     <action selector="picking:" target="XfG-lQ-9wD" id="vgZ-NS-pjT"/>
                                 </connections>
                             </button>
-                            <button identifier="SoundCloud" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KSu-Tv-439">
+                            <button identifier="Pause" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KSu-Tv-439">
                                 <rect key="frame" x="189" y="13" width="60" height="32"/>
                                 <buttonCell key="cell" type="push" title="Clear" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ys6-0u-RRg">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
@@ -790,15 +794,36 @@
                                     <action selector="clearShortcut:" target="XfG-lQ-9wD" id="KM8-bX-xuS"/>
                                 </connections>
                             </button>
-                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zzZ-bG-dLF">
-                                <rect key="frame" x="64" y="93" width="48" height="48"/>
-                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="YouTube" id="acU-hd-FUn"/>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="2ao-cC-dPF">
+                                <rect key="frame" x="414" y="93" width="48" height="48"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Pause" id="RM8-s6-Xl1"/>
                             </imageView>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="vuY-Hn-l8K">
+                                <rect key="frame" x="364" y="46" width="148" height="32"/>
+                                <buttonCell key="cell" type="push" title="Pick Shortcut" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nIv-sp-ubK">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="picking:" target="XfG-lQ-9wD" id="uzH-Uc-vJ5"/>
+                                </connections>
+                            </button>
+                            <button identifier="SoundCloud" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T0s-tG-Do9">
+                                <rect key="frame" x="364" y="13" width="60" height="32"/>
+                                <buttonCell key="cell" type="push" title="Clear" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bWp-KZ-Kmn">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="clearShortcut:" target="XfG-lQ-9wD" id="OCv-AT-E6J"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                     <connections>
                         <outlet property="iTunesButton" destination="Uaf-2T-61z" id="JVH-cl-K1L"/>
-                        <outlet property="soundCloudButton" destination="J1Z-gU-Uam" id="aI7-E8-Hxw"/>
+                        <outlet property="pauseButton" destination="vuY-Hn-l8K" id="Ol1-Tc-4cb"/>
+                        <outlet property="soundCloudButton" destination="J1Z-gU-Uam" id="0X7-53-UHv"/>
                         <outlet property="spotifyButton" destination="RIj-xY-jib" id="evz-KA-9x2"/>
                         <outlet property="vlcButton" destination="Sct-EQ-jal" id="C5N-Nc-nmL"/>
                         <outlet property="youTubeButton" destination="aWd-fR-ch5" id="4pX-GN-Llh"/>
@@ -809,6 +834,7 @@
         </scene>
     </scenes>
     <resources>
+        <image name="Pause" width="128" height="128"/>
         <image name="SoundCloud" width="240" height="120"/>
         <image name="Spotify" width="170.16000366210938" height="170.16000366210938"/>
         <image name="VLC" width="128" height="128"/>

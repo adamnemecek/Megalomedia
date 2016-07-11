@@ -13,6 +13,7 @@ import Carbon
 class ViewController: NSViewController {
 
     // Outlets for buttons for choosing new shortcuts
+    @IBOutlet weak var pauseButton: NSButton!
     @IBOutlet weak var soundCloudButton: NSButton!
     @IBOutlet weak var youTubeButton: NSButton!
     @IBOutlet weak var iTunesButton: NSButton!
@@ -80,14 +81,23 @@ class ViewController: NSViewController {
                 var path: String?
                 var handler: NSAppleEventDescriptor
                 
-                // Decide to execute AppleScript for app players or web players
-                if name == "YouTube" || name == "SoundCloud" {
+                // If universal pause button was pressed
+                if name == "Pause" {
+                    path = NSBundle.mainBundle().pathForResource("UniversalPause", ofType: "scpt")
+                    let url = NSURL(fileURLWithPath: path!)
+                    let appleScript = NSAppleScript(contentsOfURL: url, error: nil)
+                    appleScript!.executeAndReturnError(nil)
+                    return
+                }
+                    
+                // Otherwise, decide to execute AppleScript for app players or web players
+                else if name == "YouTube" || name == "SoundCloud" {
                     path = NSBundle.mainBundle().pathForResource("WebPlayPause", ofType: "scpt")
-                    handler = NSAppleEventDescriptor(string: "play_pause_web")
+                    handler = NSAppleEventDescriptor(string: "playPauseWeb")
                 }
                 else {
                     path = NSBundle.mainBundle().pathForResource("AppPlayPause", ofType: "scpt")
-                    handler = NSAppleEventDescriptor(string: "play_pause_app")
+                    handler = NSAppleEventDescriptor(string: "playPauseApp")
                 }
                 let url = NSURL(fileURLWithPath: path!)
                 let appleScript = NSAppleScript(contentsOfURL: url, error: nil)
@@ -114,6 +124,7 @@ class ViewController: NSViewController {
         appDict["iTunes"] = (iTunesButton, false, "Pick Shortcut", nil)
         appDict["YouTube"] = (youTubeButton, false, "Pick Shortcut", nil)
         appDict["SoundCloud"] = (soundCloudButton, false, "Pick Shortcut", nil)
+        appDict["Pause"] = (pauseButton, false, "Pick Shortcut", nil)
         
         // In case user had preferences saved previously, load shorcuts
         let defaults = NSUserDefaults.standardUserDefaults()
