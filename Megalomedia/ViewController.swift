@@ -32,12 +32,17 @@ class ViewController: NSViewController {
         for (name, tuple) in appDict {
             if name == sender.identifier {
                 tuple.button.title = "Pick Shortcut"
+                tuple.button.state = NSOffState
                 appDict[name] = (tuple.button, false, "Pick Shortcut", nil)
                 let defaults = NSUserDefaults.standardUserDefaults()
                 defaults.setObject(nil, forKey: name + "_label")
                 defaults.setInteger(-1, forKey: name + "_keycode")
                 defaults.synchronize()
-                return
+            }
+            else if tuple.picking {
+                tuple.button.title = tuple.label
+                tuple.button.state = NSOffState
+                appDict[name] = (tuple.button, false, tuple.label, tuple.keycode)
             }
         }
     }
@@ -58,26 +63,178 @@ class ViewController: NSViewController {
         }
     }
     
+    // Check if keypress event includes correct modifying keys
+    func validateModifiers(theEvent: NSEvent, title: String, functionKey: Bool) -> Bool {
+        if title.containsString("⌘") != theEvent.modifierFlags.contains(NSEventModifierFlags.CommandKeyMask) {
+            return false
+        }
+        if title.containsString("⌥") != theEvent.modifierFlags.contains(NSEventModifierFlags.AlternateKeyMask) {
+            return false
+        }
+        if title.containsString("⌃") != theEvent.modifierFlags.contains(NSEventModifierFlags.ControlKeyMask) {
+            return false
+        }
+        if title.containsString("⇧") != theEvent.modifierFlags.contains(NSEventModifierFlags.ShiftKeyMask) {
+            return false
+        }
+        
+        // If function key was pressed, we don't need to check for function modifier key
+        if (title.containsString("fn") != theEvent.modifierFlags.contains(NSEventModifierFlags.FunctionKeyMask)) && !functionKey {
+            return false
+        }
+        return true
+    }
+    
     // Keypresses; either activate shortcut or select new shortcut
     func playPause(theEvent: NSEvent) {
         for (name, tuple) in appDict {
+            
+            // When currently picking new shortcut
             if tuple.picking {
-                tuple.button.title = theEvent.characters!
+                
+                tuple.button.title = ""
+                
+                // Add modifier key label
+                if theEvent.modifierFlags.contains(NSEventModifierFlags.CommandKeyMask) {
+                    tuple.button.title += "⌘"
+                }
+                if theEvent.modifierFlags.contains(NSEventModifierFlags.AlternateKeyMask) {
+                    tuple.button.title += "⌥"
+                }
+                if theEvent.modifierFlags.contains(NSEventModifierFlags.ControlKeyMask) {
+                    tuple.button.title += "⌃"
+                }
+                if theEvent.modifierFlags.contains(NSEventModifierFlags.FunctionKeyMask) {
+                    tuple.button.title += "fn"
+                }
+                if theEvent.modifierFlags.contains(NSEventModifierFlags.ShiftKeyMask) {
+                    tuple.button.title += "⇧"
+                }
+                
+                // Ensure correct label is given to button corresponding to keypress (unaltered by Shift key)
+                switch theEvent.keyCode {
+                    case UInt16(kVK_Tab):
+                        tuple.button.title += "⇥"
+                    case UInt16(kVK_Space):
+                        tuple.button.title += "space"
+                    case UInt16(kVK_Return):
+                        tuple.button.title += "↩︎"
+                    case UInt16(kVK_Delete):
+                        tuple.button.title += "⌫"
+                    case UInt16(kVK_Escape):
+                        tuple.button.title += "⎋"
+                    case UInt16(kVK_RightArrow):
+                        tuple.button.title += "→"
+                    case UInt16(kVK_LeftArrow):
+                        tuple.button.title += "←"
+                    case UInt16(kVK_UpArrow):
+                        tuple.button.title += "↑"
+                    case UInt16(kVK_DownArrow):
+                        tuple.button.title += "↓"
+                    case UInt16(kVK_F1):
+                        tuple.button.title = "F1"
+                    case UInt16(kVK_F2):
+                        tuple.button.title = "F2"
+                    case UInt16(kVK_F3):
+                        tuple.button.title = "F3"
+                    case UInt16(kVK_F4):
+                        tuple.button.title = "F4"
+                    case UInt16(kVK_F5):
+                        tuple.button.title = "F5"
+                    case UInt16(kVK_F6):
+                        tuple.button.title = "F6"
+                    case UInt16(kVK_F7):
+                        tuple.button.title = "F7"
+                    case UInt16(kVK_F8):
+                        tuple.button.title = "F8"
+                    case UInt16(kVK_F9):
+                        tuple.button.title = "F9"
+                    case UInt16(kVK_F10):
+                        tuple.button.title = "F10"
+                    case UInt16(kVK_F11):
+                        tuple.button.title = "F11"
+                    case UInt16(kVK_F12):
+                        tuple.button.title = "F12"
+                    case UInt16(kVK_F13):
+                        tuple.button.title = "F13"
+                    case UInt16(kVK_F14):
+                        tuple.button.title = "F14"
+                    case UInt16(kVK_F15):
+                        tuple.button.title = "F15"
+                    case UInt16(kVK_F16):
+                        tuple.button.title = "F16"
+                    case UInt16(kVK_F17):
+                        tuple.button.title = "F17"
+                    case UInt16(kVK_F18):
+                        tuple.button.title = "F18"
+                    case UInt16(kVK_F19):
+                        tuple.button.title = "F19"
+                    case UInt16(kVK_ANSI_0):
+                        tuple.button.title += "0"
+                    case UInt16(kVK_ANSI_1):
+                        tuple.button.title += "1"
+                    case UInt16(kVK_ANSI_2):
+                        tuple.button.title += "2"
+                    case UInt16(kVK_ANSI_3):
+                        tuple.button.title += "3"
+                    case UInt16(kVK_ANSI_4):
+                        tuple.button.title += "4"
+                    case UInt16(kVK_ANSI_5):
+                        tuple.button.title += "5"
+                    case UInt16(kVK_ANSI_6):
+                        tuple.button.title += "6"
+                    case UInt16(kVK_ANSI_7):
+                        tuple.button.title += "7"
+                    case UInt16(kVK_ANSI_8):
+                        tuple.button.title += "8"
+                    case UInt16(kVK_ANSI_9):
+                        tuple.button.title += "9"
+                    case UInt16(kVK_ANSI_Grave):
+                        tuple.button.title += "`"
+                    case UInt16(kVK_ANSI_Comma):
+                        tuple.button.title += ","
+                    case UInt16(kVK_ANSI_Period):
+                        tuple.button.title += "."
+                    case UInt16(kVK_ANSI_Slash):
+                        tuple.button.title += "/"
+                    case UInt16(kVK_ANSI_Semicolon):
+                        tuple.button.title += ";"
+                    case UInt16(kVK_ANSI_Quote):
+                        tuple.button.title += "'"
+                    case UInt16(kVK_ANSI_LeftBracket):
+                        tuple.button.title += "["
+                    case UInt16(kVK_ANSI_RightBracket):
+                        tuple.button.title += "]"
+                    case UInt16(kVK_ANSI_Backslash):
+                        tuple.button.title += "\\"
+                    case UInt16(kVK_ANSI_Minus):
+                        tuple.button.title += "-"
+                    case UInt16(kVK_ANSI_Equal):
+                        tuple.button.title += "="
+                    default:
+                        tuple.button.title += theEvent.charactersIgnoringModifiers!.uppercaseString
+                }
+                
+                // Switch out of selecting shortcut state
                 tuple.button.state = NSOffState
-                appDict[name] = (tuple.button, false, theEvent.characters!, theEvent.keyCode)
+                appDict[name] = (tuple.button, false, tuple.button.title, theEvent.keyCode)
 
                 // Update user default preferences
                 let defaults = NSUserDefaults.standardUserDefaults()
-                defaults.setObject(theEvent.characters!, forKey: name + "_label")
+                defaults.setObject(tuple.button.title, forKey: name + "_label")
                 defaults.setInteger(Int(theEvent.keyCode), forKey: name + "_keycode")
                 defaults.synchronize()
                 return
             }
         }
         
+        // Regular expression used to see if key is function key
+        let regex = try! NSRegularExpression(pattern: "F[0-9]+", options: NSRegularExpressionOptions.CaseInsensitive)
+        
         // AppleScripts for pausing players
         for (name, tuple) in appDict {
-            if theEvent.keyCode == tuple.keycode {
+            let range = NSRange.init(location: 0, length: tuple.button.title.characters.count)
+            if theEvent.keyCode == tuple.keycode && validateModifiers(theEvent, title: tuple.button.title, functionKey: 0 < regex.numberOfMatchesInString(tuple.button.title, options: NSMatchingOptions.WithoutAnchoringBounds, range: range)) {
                 var path: String?
                 var handler: NSAppleEventDescriptor
                 
@@ -118,7 +275,7 @@ class ViewController: NSViewController {
         super.viewDidLoad()
         
         // Set button text style and add app entries to dictionary
-        paragraphStyle.alignment = .Center
+        paragraphStyle.alignment = NSTextAlignment.Center
         appDict["Spotify"] = (spotifyButton, false, "Pick Shortcut", nil)
         appDict["VLC"] = (vlcButton, false, "Pick Shortcut", nil)
         appDict["iTunes"] = (iTunesButton, false, "Pick Shortcut", nil)
@@ -146,4 +303,3 @@ class ViewController: NSViewController {
         }
     }
 }
-
