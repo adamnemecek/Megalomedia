@@ -6,12 +6,16 @@
 //  Copyright © 2016 Justin Shi. All rights reserved.
 //
 
+import Carbon
 import Cocoa
 import Foundation
-import Carbon
+import ServiceManagement
 
 class ViewController: NSViewController {
-
+    
+    // Check for launching app on login or not
+    @IBOutlet weak var launchOnLoginCheck: NSButton!
+    
     // Outlets for buttons for choosing new shortcuts
     @IBOutlet weak var pauseButton: NSButton!
     @IBOutlet weak var soundCloudButton: NSButton!
@@ -26,6 +30,20 @@ class ViewController: NSViewController {
     
     // Dictionary containing app name and tuple with associated button, Bool determining if currently picking new shortcut, button label, and shortcut keycode
     var appDict = [String: (button: NSButton, picking: Bool, label: String, keycode: UInt16?)]()
+    
+    // Toggles whether or not to launch on login
+    @IBAction func toggleLaunchOnLogin(sender: NSButton) {
+        print("press detected")
+        if sender.state == NSOnState {
+            SMLoginItemSetEnabled("com.justinshi.MegalomediaHelper", true)
+        }
+        else {
+            SMLoginItemSetEnabled("com.justinshi.MegalomediaHelper", false)
+        }
+        let defaults = NSUserDefaults.standardUserDefaults()
+        defaults.setBool(sender.state == NSOnState, forKey: "loginChecked")
+        defaults.synchronize()
+    }
     
     // Clears shortcuts
     @IBAction func clearShortcut(sender: NSButton) {
@@ -283,7 +301,7 @@ class ViewController: NSViewController {
         appDict["SoundCloud"] = (soundCloudButton, false, "Pick Shortcut", nil)
         appDict["Pause"] = (pauseButton, false, "Pick Shortcut", nil)
         
-        // In case user had preferences saved previously, load shorcuts
+        // In case user had preferences saved previously, load settings
         let defaults = NSUserDefaults.standardUserDefaults()
         for (name, tuple) in appDict {
             if defaults.objectForKey(name + "_label") != nil {
@@ -291,6 +309,13 @@ class ViewController: NSViewController {
                 appDict[name] = (tuple.button, false, defaults.objectForKey(name + "_label") as! String, UInt16(defaults.integerForKey(name + "_keycode")))
             }
         }
+        if defaults.boolForKey("loginChecked") {
+            launchOnLoginCheck.state = NSOnState
+        }
+        else {
+            launchOnLoginCheck.state = NSOffState
+        }
+        
         
         // Prompt user for accessibility access if not allowed and set monitors for keypresses
         AXIsProcessTrustedWithOptions([kAXTrustedCheckOptionPrompt.takeUnretainedValue() as String: true])

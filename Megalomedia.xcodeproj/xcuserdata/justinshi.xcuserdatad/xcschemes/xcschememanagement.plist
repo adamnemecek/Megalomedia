@@ -9,9 +9,19 @@
 			<key>orderHint</key>
 			<integer>0</integer>
 		</dict>
+		<key>MegalomediaHelper.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
 	</dict>
 	<key>SuppressBuildableAutocreation</key>
 	<dict>
+		<key>6468E1801D414EDC00D64694</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
 		<key>646F16431D183D8900D3EF81</key>
 		<dict>
 			<key>primary</key>

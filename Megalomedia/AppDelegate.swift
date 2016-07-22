@@ -11,6 +11,7 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     
+    // Main storyboard
     let storyboard = NSStoryboard(name: "Main", bundle: nil)
     
     // App status bar icon
@@ -39,7 +40,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     }
 
     func applicationWillTerminate(aNotification: NSNotification) {
-        // Insert code here to tear down your application
     }
     
     func windowShouldClose(sender: AnyObject) -> Bool {
@@ -52,6 +52,5 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     func exitApp(sender: AnyObject) {
         exit(0)
     }
-
 }
 

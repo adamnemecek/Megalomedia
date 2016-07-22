@@ -10,6 +10,10 @@
 		6400D0F61D280B4500B219CD /* AppPlayPause.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 6400D0F51D280B4500B219CD /* AppPlayPause.scpt */; };
 		64352E2F1D315A4E00758185 /* UniversalPause.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 64352E2E1D315A4E00758185 /* UniversalPause.scpt */; };
 		64352E311D315F1D00758185 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64352E301D315F1D00758185 /* Assets.xcassets */; };
+		6468E1841D414EDC00D64694 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6468E1831D414EDC00D64694 /* AppDelegate.swift */; };
+		6468E1861D414EDC00D64694 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6468E1851D414EDC00D64694 /* Assets.xcassets */; };
+		6468E1891D414EDC00D64694 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6468E1871D414EDC00D64694 /* MainMenu.xib */; };
+		6468E18F1D41504D00D64694 /* MegalomediaHelper.app in CopyFiles */ = {isa = PBXBuildFile; fileRef = 6468E1811D414EDC00D64694 /* MegalomediaHelper.app */; settings = {ATTRIBUTES = (RemoveHeadersOnCopy, ); }; };
 		646F16481D183D8900D3EF81 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646F16471D183D8900D3EF81 /* AppDelegate.swift */; };
 		646F164A1D183D8900D3EF81 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646F16491D183D8900D3EF81 /* ViewController.swift */; };
 		646F164F1D183D8900D3EF81 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 646F164D1D183D8900D3EF81 /* Main.storyboard */; };
@@ -28,10 +32,28 @@
 		};
 /* End PBXContainerItemProxy section */
 
+/* Begin PBXCopyFilesBuildPhase section */
+		6468E18E1D414FFC00D64694 /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = Contents/Library/LoginItems;
+			dstSubfolderSpec = 1;
+			files = (
+				6468E18F1D41504D00D64694 /* MegalomediaHelper.app in CopyFiles */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
 /* Begin PBXFileReference section */
 		6400D0F51D280B4500B219CD /* AppPlayPause.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppPlayPause.scpt; sourceTree = "<group>"; };
 		64352E2E1D315A4E00758185 /* UniversalPause.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = UniversalPause.scpt; sourceTree = "<group>"; };
 		64352E301D315F1D00758185 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6468E1811D414EDC00D64694 /* MegalomediaHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MegalomediaHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		6468E1831D414EDC00D64694 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
+		6468E1851D414EDC00D64694 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		6468E1881D414EDC00D64694 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = Base; path = Base.lproj/MainMenu.xib; sourceTree = "<group>"; };
+		6468E18A1D414EDC00D64694 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		646F16441D183D8900D3EF81 /* Megalomedia.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Megalomedia.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		646F16471D183D8900D3EF81 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		646F16491D183D8900D3EF81 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -45,6 +67,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		6468E17E1D414EDC00D64694 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		646F16411D183D8900D3EF81 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -62,11 +91,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6468E1821D414EDC00D64694 /* MegalomediaHelper */ = {
+			isa = PBXGroup;
+			children = (
+				6468E1831D414EDC00D64694 /* AppDelegate.swift */,
+				6468E1851D414EDC00D64694 /* Assets.xcassets */,
+				6468E1871D414EDC00D64694 /* MainMenu.xib */,
+				6468E18A1D414EDC00D64694 /* Info.plist */,
+			);
+			path = MegalomediaHelper;
+			sourceTree = "<group>";
+		};
 		646F163B1D183D8900D3EF81 = {
 			isa = PBXGroup;
 			children = (
 				646F16461D183D8900D3EF81 /* Megalomedia */,
 				646F16581D183D8900D3EF81 /* MegalomediaTests */,
+				6468E1821D414EDC00D64694 /* MegalomediaHelper */,
 				646F16451D183D8900D3EF81 /* Products */,
 			);
 			sourceTree = "<group>";
@@ -76,6 +117,7 @@
 			children = (
 				646F16441D183D8900D3EF81 /* Megalomedia.app */,
 				646F16551D183D8900D3EF81 /* MegalomediaTests.xctest */,
+				6468E1811D414EDC00D64694 /* MegalomediaHelper.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -108,6 +150,23 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		6468E1801D414EDC00D64694 /* MegalomediaHelper */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 6468E18D1D414EDC00D64694 /* Build configuration list for PBXNativeTarget "MegalomediaHelper" */;
+			buildPhases = (
+				6468E17D1D414EDC00D64694 /* Sources */,
+				6468E17E1D414EDC00D64694 /* Frameworks */,
+				6468E17F1D414EDC00D64694 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = MegalomediaHelper;
+			productName = MegalomediaHelper;
+			productReference = 6468E1811D414EDC00D64694 /* MegalomediaHelper.app */;
+			productType = "com.apple.product-type.application";
+		};
 		646F16431D183D8900D3EF81 /* Megalomedia */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 646F165E1D183D8900D3EF81 /* Build configuration list for PBXNativeTarget "Megalomedia" */;
@@ -115,6 +174,7 @@
 				646F16401D183D8900D3EF81 /* Sources */,
 				646F16411D183D8900D3EF81 /* Frameworks */,
 				646F16421D183D8900D3EF81 /* Resources */,
+				6468E18E1D414FFC00D64694 /* CopyFiles */,
 			);
 			buildRules = (
 			);
@@ -153,6 +213,9 @@
 				LastUpgradeCheck = 0730;
 				ORGANIZATIONNAME = "Justin Shi";
 				TargetAttributes = {
+					6468E1801D414EDC00D64694 = {
+						CreatedOnToolsVersion = 7.3.1;
+					};
 					646F16431D183D8900D3EF81 = {
 						CreatedOnToolsVersion = 7.3.1;
 					};
@@ -177,11 +240,21 @@
 			targets = (
 				646F16431D183D8900D3EF81 /* Megalomedia */,
 				646F16541D183D8900D3EF81 /* MegalomediaTests */,
+				6468E1801D414EDC00D64694 /* MegalomediaHelper */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		6468E17F1D414EDC00D64694 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6468E1861D414EDC00D64694 /* Assets.xcassets in Resources */,
+				6468E1891D414EDC00D64694 /* MainMenu.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		646F16421D183D8900D3EF81 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -204,6 +277,14 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		6468E17D1D414EDC00D64694 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				6468E1841D414EDC00D64694 /* AppDelegate.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		646F16401D183D8900D3EF81 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -233,6 +314,14 @@
 /* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
+		6468E1871D414EDC00D64694 /* MainMenu.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				6468E1881D414EDC00D64694 /* Base */,
+			);
+			name = MainMenu.xib;
+			sourceTree = "<group>";
+		};
 		646F164D1D183D8900D3EF81 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
 			children = (
@@ -244,6 +333,32 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		6468E18B1D414EDC00D64694 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = MegalomediaHelper/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.justinshi.MegalomediaHelper;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		6468E18C1D414EDC00D64694 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				COMBINE_HIDPI_IMAGES = YES;
+				INFOPLIST_FILE = MegalomediaHelper/Info.plist;
+				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
+				PRODUCT_BUNDLE_IDENTIFIER = com.justinshi.MegalomediaHelper;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
 		646F165C1D183D8900D3EF81 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -379,6 +494,14 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		6468E18D1D414EDC00D64694 /* Build configuration list for PBXNativeTarget "MegalomediaHelper" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				6468E18B1D414EDC00D64694 /* Debug */,
+				6468E18C1D414EDC00D64694 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
 		646F163F1D183D8900D3EF81 /* Build configuration list for PBXProject "Megalomedia" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
