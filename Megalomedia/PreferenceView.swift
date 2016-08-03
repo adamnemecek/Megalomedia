@@ -9,10 +9,6 @@
 import Cocoa
 
 class PreferenceView: NSView {
-
-    override func drawRect(dirtyRect: NSRect) {
-        super.drawRect(dirtyRect)
-    }
     
     override var acceptsFirstResponder: Bool {
         return true
@@ -20,5 +16,4 @@ class PreferenceView: NSView {
     
     override func keyDown(theEvent: NSEvent) {
     }
-    
 }

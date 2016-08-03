@@ -32,7 +32,7 @@
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Megalomedia" customModuleProvider="target"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75" y="0.0"/>
+            <point key="canvasLocation" x="75.5" y="-91"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
@@ -41,18 +41,119 @@
                 <windowController storyboardIdentifier="preferenceWindowController" id="B8D-0N-5wS" sceneMemberID="viewController">
                     <window key="window" title="Megalomedia - Preferences" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" animationBehavior="default" id="IQv-IB-iLA">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
-                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="196" y="240" width="480" height="270"/>
+                        <rect key="contentRect" x="196" y="240" width="526" height="415"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
-                        <value key="minSize" type="size" width="480" height="270"/>
-                        <value key="maxSize" type="size" width="480" height="270"/>
+                        <value key="minSize" type="size" width="526" height="415"/>
+                        <value key="maxSize" type="size" width="526" height="415"/>
                     </window>
                     <connections>
                         <segue destination="XfG-lQ-9wD" kind="relationship" relationship="window.shadowedContentViewController" id="cq2-FE-JQM"/>
                     </connections>
                 </windowController>
             </objects>
-            <point key="canvasLocation" x="75" y="250"/>
+            <point key="canvasLocation" x="75" y="197.5"/>
+        </scene>
+        <!--Window Controller-->
+        <scene sceneID="uaA-Sh-FtX">
+            <objects>
+                <windowController storyboardIdentifier="aboutWindowController" id="PfK-Bp-cg6" sceneMemberID="viewController">
+                    <window key="window" title="Megalomedia - About" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="lNS-gP-cbs">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <rect key="contentRect" x="196" y="249" width="526" height="270"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
+                        <value key="minSize" type="size" width="526" height="270"/>
+                        <value key="maxSize" type="size" width="526" height="270"/>
+                    </window>
+                    <connections>
+                        <segue destination="b8n-4I-LQ6" kind="relationship" relationship="window.shadowedContentViewController" id="pk7-Ff-B3g"/>
+                    </connections>
+                </windowController>
+                <customObject id="z6S-gh-cDj" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="638" y="250"/>
+        </scene>
+        <!--Window Controller-->
+        <scene sceneID="ED9-dw-lmt">
+            <objects>
+                <windowController storyboardIdentifier="notificationWindowController" id="jEb-5e-fRP" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="8TC-NJ-iUD" customClass="OverlayNotificationWindow" customModule="Megalomedia" customModuleProvider="target">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <rect key="contentRect" x="1000" y="249" width="186" height="186"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
+                        <value key="minSize" type="size" width="186" height="186"/>
+                        <value key="maxSize" type="size" width="186" height="186"/>
+                    </window>
+                    <connections>
+                        <segue destination="Vur-fZ-A20" kind="relationship" relationship="window.shadowedContentViewController" id="478-OV-rqQ"/>
+                    </connections>
+                </windowController>
+                <customObject id="8yu-5p-303" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1210" y="250"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="G5e-5m-6Hp">
+            <objects>
+                <viewController storyboardIdentifier="notificationViewController" id="Vur-fZ-A20" sceneMemberID="viewController">
+                    <view key="view" id="i76-jG-Z3z" customClass="OverlayNotificationView" customModule="Megalomedia" customModuleProvider="target">
+                        <rect key="frame" x="0.0" y="0.0" width="186" height="186"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="JQs-2K-2aU">
+                                <rect key="frame" x="61" y="61" width="64" height="64"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" id="RJY-5j-h0P"/>
+                            </imageView>
+                        </subviews>
+                    </view>
+                </viewController>
+                <customObject id="6mx-O6-Sea" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1234" y="732"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Bp7-lq-eBj">
+            <objects>
+                <viewController id="b8n-4I-LQ6" sceneMemberID="viewController">
+                    <view key="view" id="XUq-43-ShD">
+                        <rect key="frame" x="0.0" y="0.0" width="526" height="270"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eLf-Wu-RqY">
+                                <rect key="frame" x="18" y="220" width="228" height="30"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="About Megalomedia" id="P36-mI-ZRo">
+                                    <font key="font" metaFont="system" size="25"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iee-sP-LlG">
+                                <rect key="frame" x="18" y="42" width="363" height="170"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" id="Mxi-Df-NoT">
+                                    <font key="font" metaFont="system"/>
+                                    <string key="title">Megalomedia is an application that
+allows you to set customkeyboard
+shortcuts for the play, pause, and skip
+buttons of your favorite media players,
+as well as assign a button that pauses
+all media at once. Compatibility with
+more players to be added in future
+updates, or upon request. Web player
+functionality compatible with Safari and
+Chrome.</string>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DtC-JJ-pRe">
+                                <rect key="frame" x="350" y="88" width="95" height="95"/>
+                                <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Pause" id="4oB-9a-m1I"/>
+                            </imageView>
+                        </subviews>
+                    </view>
+                </viewController>
+                <customObject id="4FA-fK-7As" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="645" y="732"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="hIz-AP-VOD">
@@ -217,9 +318,20 @@
                                     <action selector="toggleLaunchOnLogin:" target="XfG-lQ-9wD" id="3Vo-Lj-MeG"/>
                                 </connections>
                             </button>
+                            <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bwq-91-O1W">
+                                <rect key="frame" x="18" y="45" width="207" height="18"/>
+                                <buttonCell key="cell" type="check" title="Enable notifications" bezelStyle="regularSquare" imagePosition="left" inset="2" id="7Ww-gC-L0V">
+                                    <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="toggleEnableNotifications:" target="XfG-lQ-9wD" id="hbc-7R-smU"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                     <connections>
+                        <outlet property="enableNotificationsCheck" destination="Bwq-91-O1W" id="pSX-ug-WZy"/>
                         <outlet property="iTunesButton" destination="Uaf-2T-61z" id="JVH-cl-K1L"/>
                         <outlet property="launchOnLoginCheck" destination="Nnd-wv-onz" id="b2r-G6-kDI"/>
                         <outlet property="pauseButton" destination="vuY-Hn-l8K" id="Ol1-Tc-4cb"/>

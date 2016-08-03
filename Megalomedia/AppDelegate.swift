@@ -11,42 +11,56 @@ import Cocoa
 @NSApplicationMain
 class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     
-    // Main storyboard
+    // Main storyboard, application status bar icon, controller fo preferences and "about" window
     let storyboard = NSStoryboard(name: "Main", bundle: nil)
-    
-    // App status bar icon
     let statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(NSSquareStatusItemLength)
+    var preferenceController: NSWindowController?
+    var aboutController: NSWindowController?
     
-    // Controller for preferences window
-    var controller: NSWindowController?
+    // Number of windows open - hide application when 0
+    var nWindowsOpen = 0
     
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         
         // Instantiate controller, set delegate for window (to handle window closing actions), set status bar and menu items
-        self.controller = self.storyboard.instantiateControllerWithIdentifier("preferenceWindowController") as? NSWindowController
-        self.controller!.window!.delegate = self
-        if let button = self.statusItem.button {
-            button.image = NSImage(named: "StatusBarButtonImage")
-        }
+        self.preferenceController = self.storyboard.instantiateControllerWithIdentifier("preferenceWindowController") as? NSWindowController
+        self.aboutController = self.storyboard.instantiateControllerWithIdentifier("aboutWindowController") as? NSWindowController
+        self.preferenceController!.window!.delegate = self
+        self.aboutController!.window!.delegate = self
+        let button = self.statusItem.button
+        button!.image = NSImage(named: "StatusBarButtonImage")
         let menu = NSMenu()
+        menu.addItem(NSMenuItem(title: "About Megalomedia", action: #selector(openAboutWindow), keyEquivalent: ""))
         menu.addItem(NSMenuItem(title: "Preferences", action: #selector(openPreferencesWindow), keyEquivalent: ""))
-        menu.addItem(NSMenuItem(title: "Quit Megalomedia", action: #selector(exitApp), keyEquivalent: "q"))
+        menu.addItem(NSMenuItem(title: "Quit Megalomedia", action: #selector(exitApp), keyEquivalent: ""))
         statusItem.menu = menu
     }
     
     func openPreferencesWindow(sender: AnyObject) {
-        self.controller!.showWindow(nil)
+        nWindowsOpen += 1
+        self.preferenceController!.showWindow(nil)
         NSApplication.sharedApplication().activateIgnoringOtherApps(true)
     }
-
-    func applicationWillTerminate(aNotification: NSNotification) {
+    
+    func openAboutWindow(sender: AnyObject) {
+        nWindowsOpen += 1
+        self.aboutController!.showWindow(nil)
+        NSApplication.sharedApplication().activateIgnoringOtherApps(true)
     }
     
     func windowShouldClose(sender: AnyObject) -> Bool {
+        nWindowsOpen -= 1
         
-        // When window is closed, switch focus to next application (gets rid of "funk" noises on keypresses)
-        NSApplication.sharedApplication().hide(sender)
+        // When all windows closed, switch focus to next application (gets rid of "funk" noises on keypresses)
+        if nWindowsOpen == 0 {
+            NSApplication.sharedApplication().hide(sender)
+        }
         return true
+    }
+    
+    func windowDidResignMain(notification: NSNotification) {
+        // When preferences window resigns main status, call this method with a generic button; this clears all shortcuts stuck in the "picking" state
+        (self.preferenceController!.contentViewController! as! ViewController).picking(NSButton())
     }
     
     func exitApp(sender: AnyObject) {

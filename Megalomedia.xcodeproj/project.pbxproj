@@ -18,6 +18,8 @@
 		646F164A1D183D8900D3EF81 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646F16491D183D8900D3EF81 /* ViewController.swift */; };
 		646F164F1D183D8900D3EF81 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 646F164D1D183D8900D3EF81 /* Main.storyboard */; };
 		646F165A1D183D8900D3EF81 /* MegalomediaTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 646F16591D183D8900D3EF81 /* MegalomediaTests.swift */; };
+		64A21E791D4B9DD700DE2122 /* OverlayNotificationWindow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A21E781D4B9DD700DE2122 /* OverlayNotificationWindow.swift */; };
+		64A21E7B1D4BBFAE00DE2122 /* OverlayNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A21E7A1D4BBFAE00DE2122 /* OverlayNotificationView.swift */; };
 		64BA452D1D1B102800B49B27 /* PreferenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BA452C1D1B102800B49B27 /* PreferenceView.swift */; };
 		64C2F6AD1D2D56E6006A8532 /* WebPlayPause.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 64C2F6AC1D2D56E5006A8532 /* WebPlayPause.scpt */; };
 /* End PBXBuildFile section */
@@ -62,6 +64,8 @@
 		646F16551D183D8900D3EF81 /* MegalomediaTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = MegalomediaTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		646F16591D183D8900D3EF81 /* MegalomediaTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MegalomediaTests.swift; sourceTree = "<group>"; };
 		646F165B1D183D8900D3EF81 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		64A21E781D4B9DD700DE2122 /* OverlayNotificationWindow.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlayNotificationWindow.swift; sourceTree = "<group>"; };
+		64A21E7A1D4BBFAE00DE2122 /* OverlayNotificationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlayNotificationView.swift; sourceTree = "<group>"; };
 		64BA452C1D1B102800B49B27 /* PreferenceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceView.swift; sourceTree = "<group>"; };
 		64C2F6AC1D2D56E5006A8532 /* WebPlayPause.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = WebPlayPause.scpt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -106,9 +110,9 @@
 			isa = PBXGroup;
 			children = (
 				646F16461D183D8900D3EF81 /* Megalomedia */,
-				646F16581D183D8900D3EF81 /* MegalomediaTests */,
 				6468E1821D414EDC00D64694 /* MegalomediaHelper */,
 				646F16451D183D8900D3EF81 /* Products */,
+				646F16581D183D8900D3EF81 /* MegalomediaTests */,
 			);
 			sourceTree = "<group>";
 		};
@@ -133,6 +137,8 @@
 				64352E2E1D315A4E00758185 /* UniversalPause.scpt */,
 				64352E301D315F1D00758185 /* Assets.xcassets */,
 				646F164D1D183D8900D3EF81 /* Main.storyboard */,
+				64A21E781D4B9DD700DE2122 /* OverlayNotificationWindow.swift */,
+				64A21E7A1D4BBFAE00DE2122 /* OverlayNotificationView.swift */,
 				646F16501D183D8900D3EF81 /* Info.plist */,
 			);
 			path = Megalomedia;
@@ -290,6 +296,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				646F164A1D183D8900D3EF81 /* ViewController.swift in Sources */,
+				64A21E791D4B9DD700DE2122 /* OverlayNotificationWindow.swift in Sources */,
+				64A21E7B1D4BBFAE00DE2122 /* OverlayNotificationView.swift in Sources */,
 				646F16481D183D8900D3EF81 /* AppDelegate.swift in Sources */,
 				64BA452D1D1B102800B49B27 /* PreferenceView.swift in Sources */,
 			);
@@ -501,6 +509,7 @@
 				6468E18C1D414EDC00D64694 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		646F163F1D183D8900D3EF81 /* Build configuration list for PBXProject "Megalomedia" */ = {
 			isa = XCConfigurationList;

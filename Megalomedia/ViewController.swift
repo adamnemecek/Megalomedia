@@ -13,10 +13,13 @@ import ServiceManagement
 
 class ViewController: NSViewController {
     
-    // Check for launching app on login or not
-    @IBOutlet weak var launchOnLoginCheck: NSButton!
+    // Controller and animation for notifications
+    var notificationWindowController: NSWindowController? = nil
+    var fadeOut: NSViewAnimation?
     
-    // Outlets for buttons for choosing new shortcuts
+    // Outlets for checks for enabling notifications and launching app on login, and buttons for choosing new shortcuts
+    @IBOutlet weak var enableNotificationsCheck: NSButton!
+    @IBOutlet weak var launchOnLoginCheck: NSButton!
     @IBOutlet weak var pauseButton: NSButton!
     @IBOutlet weak var soundCloudButton: NSButton!
     @IBOutlet weak var youTubeButton: NSButton!
@@ -27,56 +30,57 @@ class ViewController: NSViewController {
     // Font and paragraph style
     let font: NSFont = NSFont.systemFontOfSize(13)
     let paragraphStyle: NSMutableParagraphStyle = NSMutableParagraphStyle()
+    let defaults = NSUserDefaults.standardUserDefaults()
+    let regex = try! NSRegularExpression(pattern: "F[0-9]+", options: NSRegularExpressionOptions.CaseInsensitive)
     
     // Dictionary containing app name and tuple with associated button, Bool determining if currently picking new shortcut, button label, and shortcut keycode
     var appDict = [String: (button: NSButton, picking: Bool, label: String, keycode: UInt16?)]()
     
-    // Toggles whether or not to launch on login
+    @IBAction func toggleEnableNotifications(sender: NSButton) {
+        defaults.setBool(sender.state == NSOnState, forKey: "notificationsChecked")
+        defaults.synchronize()
+    }
+    
     @IBAction func toggleLaunchOnLogin(sender: NSButton) {
-        print("press detected")
-        if sender.state == NSOnState {
-            SMLoginItemSetEnabled("com.justinshi.MegalomediaHelper", true)
-        }
-        else {
-            SMLoginItemSetEnabled("com.justinshi.MegalomediaHelper", false)
-        }
-        let defaults = NSUserDefaults.standardUserDefaults()
+        SMLoginItemSetEnabled("com.justinshi.MegalomediaHelper", sender.state == NSOnState)
         defaults.setBool(sender.state == NSOnState, forKey: "loginChecked")
         defaults.synchronize()
     }
     
-    // Clears shortcuts
     @IBAction func clearShortcut(sender: NSButton) {
-        for (name, tuple) in appDict {
+        
+        // Clear shortcut of specified app and switch all buttons out of "picking" state
+        for (name, details) in appDict {
             if name == sender.identifier {
-                tuple.button.title = "Pick Shortcut"
-                tuple.button.state = NSOffState
-                appDict[name] = (tuple.button, false, "Pick Shortcut", nil)
-                let defaults = NSUserDefaults.standardUserDefaults()
+                details.button.title = "Pick Shortcut"
+                details.button.state = NSOffState
+                appDict[name] = (details.button, false, "Pick Shortcut", nil)
                 defaults.setObject(nil, forKey: name + "_label")
                 defaults.setInteger(-1, forKey: name + "_keycode")
                 defaults.synchronize()
             }
-            else if tuple.picking {
-                tuple.button.title = tuple.label
-                tuple.button.state = NSOffState
-                appDict[name] = (tuple.button, false, tuple.label, tuple.keycode)
+            else if details.picking {
+                details.button.title = details.label
+                details.button.state = NSOffState
+                appDict[name] = (details.button, false, details.label, details.keycode)
             }
         }
     }
     
     // Activates picking new shortcut state for app
     @IBAction func picking(sender: NSButton) {
-        for (name, tuple) in appDict {
-            if tuple.button == sender {
-                tuple.button.state = NSOnState
-                tuple.button.attributedTitle = NSAttributedString(string: "Press New Shortcut", attributes: [NSForegroundColorAttributeName: NSColor.whiteColor(), NSFontAttributeName: font, NSParagraphStyleAttributeName: paragraphStyle])
-                appDict[name] = (tuple.button, true, tuple.label, tuple.keycode)
+        for (name, details) in appDict {
+            if details.button == sender {
+                details.button.state = NSOnState
+                details.button.attributedTitle = NSAttributedString(string: "Press New Shortcut", attributes: [NSForegroundColorAttributeName: NSColor.whiteColor(), NSFontAttributeName: font, NSParagraphStyleAttributeName: paragraphStyle])
+                appDict[name] = (details.button, true, details.label, details.keycode)
             }
-            else if tuple.picking {
-                tuple.button.title = tuple.label
-                tuple.button.state = NSOffState
-                appDict[name] = (tuple.button, false, tuple.label, tuple.keycode)
+                
+            // Switch all other buttons out of "picking" state
+            else if details.picking {
+                details.button.title = details.label
+                details.button.state = NSOffState
+                appDict[name] = (details.button, false, details.label, details.keycode)
             }
         }
     }
@@ -105,154 +109,154 @@ class ViewController: NSViewController {
     
     // Keypresses; either activate shortcut or select new shortcut
     func playPause(theEvent: NSEvent) {
-        for (name, tuple) in appDict {
+        for (name, details) in appDict {
             
             // When currently picking new shortcut
-            if tuple.picking {
-                
-                tuple.button.title = ""
+            if details.picking {
+                details.button.title = ""
                 
                 // Add modifier key label
                 if theEvent.modifierFlags.contains(NSEventModifierFlags.CommandKeyMask) {
-                    tuple.button.title += "⌘"
+                    
+                    // Quit app shortcut; don't do anything
+                    if theEvent.keyCode == UInt16(kVK_ANSI_Q) {
+                        return
+                    }
+                    details.button.title += "⌘"
                 }
                 if theEvent.modifierFlags.contains(NSEventModifierFlags.AlternateKeyMask) {
-                    tuple.button.title += "⌥"
+                    details.button.title += "⌥"
                 }
                 if theEvent.modifierFlags.contains(NSEventModifierFlags.ControlKeyMask) {
-                    tuple.button.title += "⌃"
+                    details.button.title += "⌃"
                 }
                 if theEvent.modifierFlags.contains(NSEventModifierFlags.FunctionKeyMask) {
-                    tuple.button.title += "fn"
+                    details.button.title += "fn"
                 }
                 if theEvent.modifierFlags.contains(NSEventModifierFlags.ShiftKeyMask) {
-                    tuple.button.title += "⇧"
+                    details.button.title += "⇧"
                 }
                 
                 // Ensure correct label is given to button corresponding to keypress (unaltered by Shift key)
                 switch theEvent.keyCode {
                     case UInt16(kVK_Tab):
-                        tuple.button.title += "⇥"
+                        details.button.title += "⇥"
                     case UInt16(kVK_Space):
-                        tuple.button.title += "space"
+                        details.button.title += "space"
                     case UInt16(kVK_Return):
-                        tuple.button.title += "↩︎"
+                        details.button.title += "↩︎"
                     case UInt16(kVK_Delete):
-                        tuple.button.title += "⌫"
+                        details.button.title += "⌫"
                     case UInt16(kVK_Escape):
-                        tuple.button.title += "⎋"
+                        details.button.title += "⎋"
                     case UInt16(kVK_RightArrow):
-                        tuple.button.title += "→"
+                        details.button.title += "→"
                     case UInt16(kVK_LeftArrow):
-                        tuple.button.title += "←"
+                        details.button.title += "←"
                     case UInt16(kVK_UpArrow):
-                        tuple.button.title += "↑"
+                        details.button.title += "↑"
                     case UInt16(kVK_DownArrow):
-                        tuple.button.title += "↓"
+                        details.button.title += "↓"
                     case UInt16(kVK_F1):
-                        tuple.button.title = "F1"
+                        details.button.title = "F1"
                     case UInt16(kVK_F2):
-                        tuple.button.title = "F2"
+                        details.button.title = "F2"
                     case UInt16(kVK_F3):
-                        tuple.button.title = "F3"
+                        details.button.title = "F3"
                     case UInt16(kVK_F4):
-                        tuple.button.title = "F4"
+                        details.button.title = "F4"
                     case UInt16(kVK_F5):
-                        tuple.button.title = "F5"
+                        details.button.title = "F5"
                     case UInt16(kVK_F6):
-                        tuple.button.title = "F6"
+                        details.button.title = "F6"
                     case UInt16(kVK_F7):
-                        tuple.button.title = "F7"
+                        details.button.title = "F7"
                     case UInt16(kVK_F8):
-                        tuple.button.title = "F8"
+                        details.button.title = "F8"
                     case UInt16(kVK_F9):
-                        tuple.button.title = "F9"
+                        details.button.title = "F9"
                     case UInt16(kVK_F10):
-                        tuple.button.title = "F10"
+                        details.button.title = "F10"
                     case UInt16(kVK_F11):
-                        tuple.button.title = "F11"
+                        details.button.title = "F11"
                     case UInt16(kVK_F12):
-                        tuple.button.title = "F12"
+                        details.button.title = "F12"
                     case UInt16(kVK_F13):
-                        tuple.button.title = "F13"
+                        details.button.title = "F13"
                     case UInt16(kVK_F14):
-                        tuple.button.title = "F14"
+                        details.button.title = "F14"
                     case UInt16(kVK_F15):
-                        tuple.button.title = "F15"
+                        details.button.title = "F15"
                     case UInt16(kVK_F16):
-                        tuple.button.title = "F16"
+                        details.button.title = "F16"
                     case UInt16(kVK_F17):
-                        tuple.button.title = "F17"
+                        details.button.title = "F17"
                     case UInt16(kVK_F18):
-                        tuple.button.title = "F18"
+                        details.button.title = "F18"
                     case UInt16(kVK_F19):
-                        tuple.button.title = "F19"
+                        details.button.title = "F19"
                     case UInt16(kVK_ANSI_0):
-                        tuple.button.title += "0"
+                        details.button.title += "0"
                     case UInt16(kVK_ANSI_1):
-                        tuple.button.title += "1"
+                        details.button.title += "1"
                     case UInt16(kVK_ANSI_2):
-                        tuple.button.title += "2"
+                        details.button.title += "2"
                     case UInt16(kVK_ANSI_3):
-                        tuple.button.title += "3"
+                        details.button.title += "3"
                     case UInt16(kVK_ANSI_4):
-                        tuple.button.title += "4"
+                        details.button.title += "4"
                     case UInt16(kVK_ANSI_5):
-                        tuple.button.title += "5"
+                        details.button.title += "5"
                     case UInt16(kVK_ANSI_6):
-                        tuple.button.title += "6"
+                        details.button.title += "6"
                     case UInt16(kVK_ANSI_7):
-                        tuple.button.title += "7"
+                        details.button.title += "7"
                     case UInt16(kVK_ANSI_8):
-                        tuple.button.title += "8"
+                        details.button.title += "8"
                     case UInt16(kVK_ANSI_9):
-                        tuple.button.title += "9"
+                        details.button.title += "9"
                     case UInt16(kVK_ANSI_Grave):
-                        tuple.button.title += "`"
+                        details.button.title += "`"
                     case UInt16(kVK_ANSI_Comma):
-                        tuple.button.title += ","
+                        details.button.title += ","
                     case UInt16(kVK_ANSI_Period):
-                        tuple.button.title += "."
+                        details.button.title += "."
                     case UInt16(kVK_ANSI_Slash):
-                        tuple.button.title += "/"
+                        details.button.title += "/"
                     case UInt16(kVK_ANSI_Semicolon):
-                        tuple.button.title += ";"
+                        details.button.title += ";"
                     case UInt16(kVK_ANSI_Quote):
-                        tuple.button.title += "'"
+                        details.button.title += "'"
                     case UInt16(kVK_ANSI_LeftBracket):
-                        tuple.button.title += "["
+                        details.button.title += "["
                     case UInt16(kVK_ANSI_RightBracket):
-                        tuple.button.title += "]"
+                        details.button.title += "]"
                     case UInt16(kVK_ANSI_Backslash):
-                        tuple.button.title += "\\"
+                        details.button.title += "\\"
                     case UInt16(kVK_ANSI_Minus):
-                        tuple.button.title += "-"
+                        details.button.title += "-"
                     case UInt16(kVK_ANSI_Equal):
-                        tuple.button.title += "="
+                        details.button.title += "="
                     default:
-                        tuple.button.title += theEvent.charactersIgnoringModifiers!.uppercaseString
+                        details.button.title += theEvent.charactersIgnoringModifiers!.uppercaseString
                 }
                 
                 // Switch out of selecting shortcut state
-                tuple.button.state = NSOffState
-                appDict[name] = (tuple.button, false, tuple.button.title, theEvent.keyCode)
+                details.button.state = NSOffState
+                appDict[name] = (details.button, false, details.button.title, theEvent.keyCode)
 
                 // Update user default preferences
-                let defaults = NSUserDefaults.standardUserDefaults()
-                defaults.setObject(tuple.button.title, forKey: name + "_label")
+                defaults.setObject(details.button.title, forKey: name + "_label")
                 defaults.setInteger(Int(theEvent.keyCode), forKey: name + "_keycode")
                 defaults.synchronize()
                 return
             }
         }
         
-        // Regular expression used to see if key is function key
-        let regex = try! NSRegularExpression(pattern: "F[0-9]+", options: NSRegularExpressionOptions.CaseInsensitive)
-        
         // AppleScripts for pausing players
-        for (name, tuple) in appDict {
-            let range = NSRange.init(location: 0, length: tuple.button.title.characters.count)
-            if theEvent.keyCode == tuple.keycode && validateModifiers(theEvent, title: tuple.button.title, functionKey: 0 < regex.numberOfMatchesInString(tuple.button.title, options: NSMatchingOptions.WithoutAnchoringBounds, range: range)) {
+        for (name, details) in appDict {
+            let range = NSRange.init(location: 0, length: details.button.title.characters.count)
+            if theEvent.keyCode == details.keycode && validateModifiers(theEvent, title: details.button.title, functionKey: 0 < regex.numberOfMatchesInString(details.button.title, options: NSMatchingOptions.WithoutAnchoringBounds, range: range)) {
                 var path: String?
                 var handler: NSAppleEventDescriptor
                 
@@ -262,6 +266,7 @@ class ViewController: NSViewController {
                     let url = NSURL(fileURLWithPath: path!)
                     let appleScript = NSAppleScript(contentsOfURL: url, error: nil)
                     appleScript!.executeAndReturnError(nil)
+                    displayNotification(name)
                     return
                 }
                     
@@ -285,13 +290,35 @@ class ViewController: NSViewController {
                 event.setParamDescriptor(handler, forKeyword: AEKeyword(keyASSubroutineName))
                 event.setParamDescriptor(parameterList, forKeyword: AEKeyword(keyDirectObject))
                 appleScript!.executeAppleEvent(event, error: nil)
+                displayNotification(name)
             }
+        }
+    }
+    
+    // Called to display notification showing which app shortcut pressed was
+    func displayNotification(appName: String) {
+        if enableNotificationsCheck.state == NSOnState {
+            
+            // Handle notifications and animations if new shortcut is pressed while old notification still visible
+            if notificationWindowController != nil && notificationWindowController!.window!.visible {
+                fadeOut!.stopAnimation()
+                notificationWindowController!.close()
+            }
+            notificationWindowController = NSStoryboard(name: "Main", bundle: nil).instantiateControllerWithIdentifier("notificationWindowController") as? NSWindowController
+            notificationWindowController!.window!.delegate = AppDelegate()
+            (notificationWindowController!.window!.contentView!.subviews[0] as! NSImageView).image = NSImage(named: appName + " inverted")
+            notificationWindowController!.showWindow(nil)
+            fadeOut = NSViewAnimation(viewAnimations: [[NSViewAnimationTargetKey: notificationWindowController!.window!, NSViewAnimationEffectKey: NSViewAnimationFadeOutEffect]])
+            fadeOut!.duration = 1.5
+            fadeOut!.animationBlockingMode = .Nonblocking
+            fadeOut!.animationCurve = .EaseIn
+            fadeOut!.startAnimation()
         }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         // Set button text style and add app entries to dictionary
         paragraphStyle.alignment = NSTextAlignment.Center
         appDict["Spotify"] = (spotifyButton, false, "Pick Shortcut", nil)
@@ -302,11 +329,10 @@ class ViewController: NSViewController {
         appDict["Pause"] = (pauseButton, false, "Pick Shortcut", nil)
         
         // In case user had preferences saved previously, load settings
-        let defaults = NSUserDefaults.standardUserDefaults()
-        for (name, tuple) in appDict {
+        for (name, details) in appDict {
             if defaults.objectForKey(name + "_label") != nil {
-                tuple.button.title = defaults.objectForKey(name + "_label") as! String
-                appDict[name] = (tuple.button, false, defaults.objectForKey(name + "_label") as! String, UInt16(defaults.integerForKey(name + "_keycode")))
+                details.button.title = defaults.objectForKey(name + "_label") as! String
+                appDict[name] = (details.button, false, defaults.objectForKey(name + "_label") as! String, UInt16(defaults.integerForKey(name + "_keycode")))
             }
         }
         if defaults.boolForKey("loginChecked") {
@@ -315,7 +341,12 @@ class ViewController: NSViewController {
         else {
             launchOnLoginCheck.state = NSOffState
         }
-        
+        if defaults.boolForKey("notificationsChecked") {
+            enableNotificationsCheck.state = NSOnState
+        }
+        else {
+            enableNotificationsCheck.state = NSOffState
+        }
         
         // Prompt user for accessibility access if not allowed and set monitors for keypresses
         AXIsProcessTrustedWithOptions([kAXTrustedCheckOptionPrompt.takeUnretainedValue() as String: true])
