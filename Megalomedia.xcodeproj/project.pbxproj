@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6400D0F61D280B4500B219CD /* AppPlayPause.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 6400D0F51D280B4500B219CD /* AppPlayPause.scpt */; };
+		64103AC31D5961CD00533330 /* YouTubeSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64103AC21D5961CD00533330 /* YouTubeSelectorView.swift */; };
 		64352E2F1D315A4E00758185 /* UniversalPause.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 64352E2E1D315A4E00758185 /* UniversalPause.scpt */; };
 		64352E311D315F1D00758185 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 64352E301D315F1D00758185 /* Assets.xcassets */; };
 		6468E1841D414EDC00D64694 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6468E1831D414EDC00D64694 /* AppDelegate.swift */; };
@@ -22,6 +23,7 @@
 		64A21E7B1D4BBFAE00DE2122 /* OverlayNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A21E7A1D4BBFAE00DE2122 /* OverlayNotificationView.swift */; };
 		64BA452D1D1B102800B49B27 /* PreferenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BA452C1D1B102800B49B27 /* PreferenceView.swift */; };
 		64C2F6AD1D2D56E6006A8532 /* WebPlayPause.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 64C2F6AC1D2D56E5006A8532 /* WebPlayPause.scpt */; };
+		64F0618E1D56E21E0019AF85 /* YouTubeTabCount.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 64F0618D1D56E21E0019AF85 /* YouTubeTabCount.scpt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -49,6 +51,7 @@
 
 /* Begin PBXFileReference section */
 		6400D0F51D280B4500B219CD /* AppPlayPause.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppPlayPause.scpt; sourceTree = "<group>"; };
+		64103AC21D5961CD00533330 /* YouTubeSelectorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YouTubeSelectorView.swift; sourceTree = "<group>"; };
 		64352E2E1D315A4E00758185 /* UniversalPause.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = UniversalPause.scpt; sourceTree = "<group>"; };
 		64352E301D315F1D00758185 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		6468E1811D414EDC00D64694 /* MegalomediaHelper.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MegalomediaHelper.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -68,6 +71,7 @@
 		64A21E7A1D4BBFAE00DE2122 /* OverlayNotificationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlayNotificationView.swift; sourceTree = "<group>"; };
 		64BA452C1D1B102800B49B27 /* PreferenceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceView.swift; sourceTree = "<group>"; };
 		64C2F6AC1D2D56E5006A8532 /* WebPlayPause.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = WebPlayPause.scpt; sourceTree = "<group>"; };
+		64F0618D1D56E21E0019AF85 /* YouTubeTabCount.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = YouTubeTabCount.scpt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -131,10 +135,12 @@
 			children = (
 				646F16471D183D8900D3EF81 /* AppDelegate.swift */,
 				646F16491D183D8900D3EF81 /* ViewController.swift */,
+				64103AC21D5961CD00533330 /* YouTubeSelectorView.swift */,
 				64BA452C1D1B102800B49B27 /* PreferenceView.swift */,
 				6400D0F51D280B4500B219CD /* AppPlayPause.scpt */,
 				64C2F6AC1D2D56E5006A8532 /* WebPlayPause.scpt */,
 				64352E2E1D315A4E00758185 /* UniversalPause.scpt */,
+				64F0618D1D56E21E0019AF85 /* YouTubeTabCount.scpt */,
 				64352E301D315F1D00758185 /* Assets.xcassets */,
 				646F164D1D183D8900D3EF81 /* Main.storyboard */,
 				64A21E781D4B9DD700DE2122 /* OverlayNotificationWindow.swift */,
@@ -268,6 +274,7 @@
 				6400D0F61D280B4500B219CD /* AppPlayPause.scpt in Resources */,
 				646F164F1D183D8900D3EF81 /* Main.storyboard in Resources */,
 				64C2F6AD1D2D56E6006A8532 /* WebPlayPause.scpt in Resources */,
+				64F0618E1D56E21E0019AF85 /* YouTubeTabCount.scpt in Resources */,
 				64352E2F1D315A4E00758185 /* UniversalPause.scpt in Resources */,
 				64352E311D315F1D00758185 /* Assets.xcassets in Resources */,
 			);
@@ -300,6 +307,7 @@
 				64A21E7B1D4BBFAE00DE2122 /* OverlayNotificationView.swift in Sources */,
 				646F16481D183D8900D3EF81 /* AppDelegate.swift in Sources */,
 				64BA452D1D1B102800B49B27 /* PreferenceView.swift in Sources */,
+				64103AC31D5961CD00533330 /* YouTubeSelectorView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

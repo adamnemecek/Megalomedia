@@ -32,7 +32,7 @@
                 <customObject id="Voe-Tx-rLC" customClass="AppDelegate" customModule="Megalomedia" customModuleProvider="target"/>
                 <customObject id="Ady-hI-5gd" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="75.5" y="-91"/>
+            <point key="canvasLocation" x="75.5" y="1"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="R2V-B0-nI4">
@@ -51,14 +51,14 @@
                     </connections>
                 </windowController>
             </objects>
-            <point key="canvasLocation" x="75" y="197.5"/>
+            <point key="canvasLocation" x="75" y="322.5"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="uaA-Sh-FtX">
             <objects>
                 <windowController storyboardIdentifier="aboutWindowController" id="PfK-Bp-cg6" sceneMemberID="viewController">
                     <window key="window" title="Megalomedia - About" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="lNS-gP-cbs">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
                         <rect key="contentRect" x="196" y="249" width="526" height="270"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
                         <value key="minSize" type="size" width="526" height="270"/>
@@ -77,7 +77,7 @@
             <objects>
                 <windowController storyboardIdentifier="notificationWindowController" id="jEb-5e-fRP" sceneMemberID="viewController">
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="8TC-NJ-iUD" customClass="OverlayNotificationWindow" customModule="Megalomedia" customModuleProvider="target">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
                         <rect key="contentRect" x="1000" y="249" width="186" height="186"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
                         <value key="minSize" type="size" width="186" height="186"/>
@@ -89,7 +89,40 @@
                 </windowController>
                 <customObject id="8yu-5p-303" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1210" y="250"/>
+            <point key="canvasLocation" x="1044" y="220"/>
+        </scene>
+        <!--Window Controller-->
+        <scene sceneID="rUJ-3g-oJm">
+            <objects>
+                <windowController storyboardIdentifier="test" id="f2g-Pv-Rek" sceneMemberID="viewController">
+                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="d9x-9X-XHe">
+                        <windowStyleMask key="styleMask" closable="YES" miniaturizable="YES"/>
+                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
+                        <rect key="contentRect" x="549" y="390" width="480" height="186"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
+                        <value key="minSize" type="size" width="480" height="186"/>
+                        <value key="maxSize" type="size" width="480" height="186"/>
+                    </window>
+                    <connections>
+                        <segue destination="kUV-uc-xsB" kind="relationship" relationship="window.shadowedContentViewController" id="vDX-ll-oEL"/>
+                    </connections>
+                </windowController>
+                <customObject id="Tvs-DX-XGt" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1452" y="262"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="Pcn-NR-jmT">
+            <objects>
+                <viewController id="kUV-uc-xsB" sceneMemberID="viewController">
+                    <view key="view" id="Xx2-Xu-G0L">
+                        <rect key="frame" x="0.0" y="0.0" width="480" height="186"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </view>
+                </viewController>
+                <customObject id="5Bg-7Z-NQD" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1452" y="751"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="G5e-5m-6Hp">
@@ -108,7 +141,7 @@
                 </viewController>
                 <customObject id="6mx-O6-Sea" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1234" y="732"/>
+            <point key="canvasLocation" x="1044" y="690"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Bp7-lq-eBj">
@@ -193,20 +226,26 @@ Chrome.</string>
                                 </connections>
                             </button>
                             <button identifier="Spotify" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="B2A-3Q-JVU">
-                                <rect key="frame" x="14" y="267" width="60" height="32"/>
+                                <rect key="frame" x="14" y="267" width="68" height="32"/>
                                 <buttonCell key="cell" type="push" title="Clear" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="P3h-ML-cJp">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
                                 </buttonCell>
                                 <connections>
                                     <action selector="clearShortcut:" target="XfG-lQ-9wD" id="KH9-9V-rZO"/>
                                 </connections>
                             </button>
                             <button identifier="VLC" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="nlD-oU-zFZ">
-                                <rect key="frame" x="189" y="267" width="60" height="32"/>
+                                <rect key="frame" x="189" y="267" width="68" height="32"/>
                                 <buttonCell key="cell" type="push" title="Clear" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="5Kr-7y-HqC">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
                                 </buttonCell>
                                 <connections>
                                     <action selector="clearShortcut:" target="XfG-lQ-9wD" id="27v-gf-xPd"/>
@@ -227,10 +266,13 @@ Chrome.</string>
                                 </connections>
                             </button>
                             <button identifier="iTunes" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="CrM-tL-qut">
-                                <rect key="frame" x="364" y="267" width="60" height="32"/>
+                                <rect key="frame" x="364" y="267" width="68" height="32"/>
                                 <buttonCell key="cell" type="push" title="Clear" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="MUr-dl-5rc">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
                                 </buttonCell>
                                 <connections>
                                     <action selector="clearShortcut:" target="XfG-lQ-9wD" id="UzE-WU-MTe"/>
@@ -251,10 +293,13 @@ Chrome.</string>
                                 </connections>
                             </button>
                             <button identifier="YouTube" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gV7-9G-ji9">
-                                <rect key="frame" x="14" y="118" width="60" height="32"/>
+                                <rect key="frame" x="14" y="118" width="68" height="32"/>
                                 <buttonCell key="cell" type="push" title="Clear" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="g7N-hT-Jke">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
                                 </buttonCell>
                                 <connections>
                                     <action selector="clearShortcut:" target="XfG-lQ-9wD" id="ZIX-lP-bpx"/>
@@ -275,10 +320,13 @@ Chrome.</string>
                                 </connections>
                             </button>
                             <button identifier="SoundCloud" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="KSu-Tv-439">
-                                <rect key="frame" x="189" y="118" width="60" height="32"/>
+                                <rect key="frame" x="189" y="118" width="68" height="32"/>
                                 <buttonCell key="cell" type="push" title="Clear" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="Ys6-0u-RRg">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
                                 </buttonCell>
                                 <connections>
                                     <action selector="clearShortcut:" target="XfG-lQ-9wD" id="KM8-bX-xuS"/>
@@ -299,10 +347,13 @@ Chrome.</string>
                                 </connections>
                             </button>
                             <button identifier="Pause" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="T0s-tG-Do9">
-                                <rect key="frame" x="364" y="118" width="60" height="32"/>
+                                <rect key="frame" x="364" y="118" width="68" height="32"/>
                                 <buttonCell key="cell" type="push" title="Clear" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="bWp-KZ-Kmn">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
                                 </buttonCell>
                                 <connections>
                                     <action selector="clearShortcut:" target="XfG-lQ-9wD" id="OCv-AT-E6J"/>
@@ -328,6 +379,16 @@ Chrome.</string>
                                     <action selector="toggleEnableNotifications:" target="XfG-lQ-9wD" id="hbc-7R-smU"/>
                                 </connections>
                             </button>
+                            <button identifier="ClearAll" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Yn-SY-jwk">
+                                <rect key="frame" x="434" y="70" width="78" height="32"/>
+                                <buttonCell key="cell" type="push" title="Clear All" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="swV-Ee-PYv">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="clearShortcut:" target="XfG-lQ-9wD" id="ex5-Ts-bKr"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                     <connections>
@@ -342,7 +403,7 @@ Chrome.</string>
                     </connections>
                 </viewController>
             </objects>
-            <point key="canvasLocation" x="75" y="672.5"/>
+            <point key="canvasLocation" x="75" y="804.5"/>
         </scene>
     </scenes>
     <resources>

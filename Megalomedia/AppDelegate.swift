@@ -22,9 +22,11 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     
     func applicationDidFinishLaunching(aNotification: NSNotification) {
         
-        // Instantiate controller, set delegate for window (to handle window closing actions), set status bar and menu items
+        // Instantiate controller, set delegate for window (to handle window closing actions), set window level, set status bar and menu items
         self.preferenceController = self.storyboard.instantiateControllerWithIdentifier("preferenceWindowController") as? NSWindowController
         self.aboutController = self.storyboard.instantiateControllerWithIdentifier("aboutWindowController") as? NSWindowController
+        self.preferenceController!.window!.level = Int(CGWindowLevelForKey(CGWindowLevelKey.FloatingWindowLevelKey))
+        self.aboutController!.window!.level = Int(CGWindowLevelForKey(CGWindowLevelKey.FloatingWindowLevelKey))
         self.preferenceController!.window!.delegate = self
         self.aboutController!.window!.delegate = self
         let button = self.statusItem.button
@@ -50,7 +52,6 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     
     func windowShouldClose(sender: AnyObject) -> Bool {
         nWindowsOpen -= 1
-        
         // When all windows closed, switch focus to next application (gets rid of "funk" noises on keypresses)
         if nWindowsOpen == 0 {
             NSApplication.sharedApplication().hide(sender)
@@ -67,4 +68,3 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         exit(0)
     }
 }
-

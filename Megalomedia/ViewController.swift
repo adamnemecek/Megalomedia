@@ -14,6 +14,10 @@ import ServiceManagement
 class ViewController: NSViewController {
     
     // Controller and animation for notifications
+    
+    // WORKING ON IT
+    var testWindowController: NSWindowController?
+    // WORKING ON IT
     var notificationWindowController: NSWindowController? = nil
     var fadeOut: NSViewAnimation?
     
@@ -51,18 +55,25 @@ class ViewController: NSViewController {
         
         // Clear shortcut of specified app and switch all buttons out of "picking" state
         for (name, details) in appDict {
-            if name == sender.identifier {
+            if details.picking {
+                details.button.title = details.label
+                details.button.state = NSOffState
+                appDict[name] = (details.button, false, details.label, details.keycode)
+                
+                // Change cancel button back to clear button
+                for cancel in self.view.subviews {
+                    if cancel.identifier == name {
+                        (cancel as! NSButton).title = "Clear"
+                    }
+                }
+            }
+            else if name == sender.identifier || sender.identifier == "ClearAll" {
                 details.button.title = "Pick Shortcut"
                 details.button.state = NSOffState
                 appDict[name] = (details.button, false, "Pick Shortcut", nil)
                 defaults.setObject(nil, forKey: name + "_label")
                 defaults.setInteger(-1, forKey: name + "_keycode")
                 defaults.synchronize()
-            }
-            else if details.picking {
-                details.button.title = details.label
-                details.button.state = NSOffState
-                appDict[name] = (details.button, false, details.label, details.keycode)
             }
         }
     }
@@ -74,6 +85,13 @@ class ViewController: NSViewController {
                 details.button.state = NSOnState
                 details.button.attributedTitle = NSAttributedString(string: "Press New Shortcut", attributes: [NSForegroundColorAttributeName: NSColor.whiteColor(), NSFontAttributeName: font, NSParagraphStyleAttributeName: paragraphStyle])
                 appDict[name] = (details.button, true, details.label, details.keycode)
+                
+                // Change clear button to cancel button
+                for clear in self.view.subviews {
+                    if clear.identifier == name {
+                        (clear as! NSButton).title = "Cancel"
+                    }
+                }
             }
                 
             // Switch all other buttons out of "picking" state
@@ -81,6 +99,13 @@ class ViewController: NSViewController {
                 details.button.title = details.label
                 details.button.state = NSOffState
                 appDict[name] = (details.button, false, details.label, details.keycode)
+                
+                // Change cancel button back to clear button
+                for cancel in self.view.subviews {
+                    if cancel.identifier == name {
+                        (cancel as! NSButton).title = "Clear"
+                    }
+                }
             }
         }
     }
@@ -241,6 +266,24 @@ class ViewController: NSViewController {
                         details.button.title += theEvent.charactersIgnoringModifiers!.uppercaseString
                 }
                 
+                // Avoid overlapping shortcuts
+                for (otherName, otherDetails) in appDict {
+                    if !otherDetails.picking && otherDetails.button.title == details.button.title {
+                        otherDetails.button.title = "Pick Shortcut"
+                        appDict[otherName] = (otherDetails.button, false, otherDetails.button.title, nil)
+                        defaults.setObject(nil, forKey: otherName + "_label")
+                        defaults.setInteger(-1, forKey: otherName + "_keycode")
+                        defaults.synchronize()
+                    }
+                }
+                
+                // Change cancel button back to clear button
+                for cancel in self.view.subviews {
+                    if cancel.identifier == name {
+                        (cancel as! NSButton).title = "Clear"
+                    }
+                }
+                
                 // Switch out of selecting shortcut state
                 details.button.state = NSOffState
                 appDict[name] = (details.button, false, details.button.title, theEvent.keyCode)
@@ -272,6 +315,11 @@ class ViewController: NSViewController {
                     
                 // Otherwise, decide to execute AppleScript for app players or web players
                 else if name == "YouTube" || name == "SoundCloud" {
+                    
+                    // WORKING ON IT
+                    displayYouTubeTitles()
+                    // WORKING ON IT
+                    
                     path = NSBundle.mainBundle().pathForResource("WebPlayPause", ofType: "scpt")
                     handler = NSAppleEventDescriptor(string: "playPauseWeb")
                 }
@@ -289,8 +337,9 @@ class ViewController: NSViewController {
                 let event = NSAppleEventDescriptor.appleEventWithEventClass(AEEventClass(kASAppleScriptSuite), eventID: AEEventID(kASSubroutineEvent), targetDescriptor: target, returnID: AEReturnID(kAutoGenerateReturnID), transactionID: AETransactionID(kAnyTransactionID))
                 event.setParamDescriptor(handler, forKeyword: AEKeyword(keyASSubroutineName))
                 event.setParamDescriptor(parameterList, forKeyword: AEKeyword(keyDirectObject))
-                appleScript!.executeAppleEvent(event, error: nil)
-                displayNotification(name)
+                if appleScript!.executeAppleEvent(event, error: nil).stringValue == "running" {
+                    displayNotification(name)
+                }
             }
         }
     }
@@ -305,7 +354,6 @@ class ViewController: NSViewController {
                 notificationWindowController!.close()
             }
             notificationWindowController = NSStoryboard(name: "Main", bundle: nil).instantiateControllerWithIdentifier("notificationWindowController") as? NSWindowController
-            notificationWindowController!.window!.delegate = AppDelegate()
             (notificationWindowController!.window!.contentView!.subviews[0] as! NSImageView).image = NSImage(named: appName + " inverted")
             notificationWindowController!.showWindow(nil)
             fadeOut = NSViewAnimation(viewAnimations: [[NSViewAnimationTargetKey: notificationWindowController!.window!, NSViewAnimationEffectKey: NSViewAnimationFadeOutEffect]])
@@ -316,9 +364,51 @@ class ViewController: NSViewController {
         }
     }
     
+    // WORKING ON IT
+    func displayYouTubeTitles() {
+        let path = NSBundle.mainBundle().pathForResource("YouTubeTabCount", ofType: "scpt")
+        let url = NSURL(fileURLWithPath: path!)
+        let appleScript = NSAppleScript(contentsOfURL: url, error: nil)
+        let rawResult = appleScript!.executeAndReturnError(nil)
+        var titleArray = [String]()
+        for i in 1...rawResult.numberOfItems {
+            let rawString = rawResult.descriptorAtIndex(i)!.stringValue
+            titleArray.append(rawString!.substringWithRange(rawString!.startIndex.advancedBy(5)..<rawString!.endIndex.advancedBy(-3)))
+        }
+        testWindowController = NSStoryboard(name: "Main", bundle: nil).instantiateControllerWithIdentifier("test") as? NSWindowController
+        let theFrame = testWindowController!.window!.contentView!.frame
+        let scrollview = NSScrollView(frame: theFrame)
+        scrollview.borderType = .NoBorder
+        scrollview.autoresizingMask = .ViewNotSizable
+        scrollview.contentView = NSClipView(frame: theFrame)
+        var docHeight: CGFloat
+        if (30 * rawResult.numberOfItems) > Int(theFrame.height) {
+            docHeight = CGFloat(30 * rawResult.numberOfItems)
+        }
+        else {
+            docHeight = theFrame.height
+        }
+        scrollview.contentView.documentView = YouTubeSelectorView(frame: NSMakeRect(0.0, 0.0, theFrame.width, docHeight))
+        for i in 0..<rawResult.numberOfItems {
+            let text = NSTextField(frame: NSMakeRect(0.0, 30.0 * CGFloat(i), theFrame.width, 30))
+            text.stringValue = titleArray[i]
+            text.selectable = false
+            text.bordered = false
+            scrollview.contentView.documentView?.addSubview(text)
+        }
+        scrollview.drawsBackground = false
+        scrollview.verticalScrollElasticity = .None
+        scrollview.hasVerticalScroller = true
+        scrollview.horizontalScrollElasticity = .None
+        scrollview.hasHorizontalScroller = false
+        testWindowController!.window!.contentView = scrollview
+        testWindowController!.showWindow(nil)
+    }
+    // WORKING ON IT
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
         // Set button text style and add app entries to dictionary
         paragraphStyle.alignment = NSTextAlignment.Center
         appDict["Spotify"] = (spotifyButton, false, "Pick Shortcut", nil)
@@ -359,3 +449,5 @@ class ViewController: NSViewController {
         }
     }
 }
+
+// forward and backwards skip, YouTube multiple pages problem
