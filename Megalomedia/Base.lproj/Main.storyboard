@@ -94,14 +94,13 @@
         <!--Window Controller-->
         <scene sceneID="rUJ-3g-oJm">
             <objects>
-                <windowController storyboardIdentifier="test" id="f2g-Pv-Rek" sceneMemberID="viewController">
+                <windowController storyboardIdentifier="YouTubeSwitcherWindowController" id="f2g-Pv-Rek" sceneMemberID="viewController">
                     <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="d9x-9X-XHe">
                         <windowStyleMask key="styleMask" closable="YES" miniaturizable="YES"/>
-                        <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
-                        <rect key="contentRect" x="549" y="390" width="480" height="186"/>
+                        <rect key="contentRect" x="549" y="390" width="372" height="186"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
-                        <value key="minSize" type="size" width="480" height="186"/>
-                        <value key="maxSize" type="size" width="480" height="186"/>
+                        <value key="minSize" type="size" width="372" height="186"/>
+                        <value key="maxSize" type="size" width="372" height="186"/>
                     </window>
                     <connections>
                         <segue destination="kUV-uc-xsB" kind="relationship" relationship="window.shadowedContentViewController" id="vDX-ll-oEL"/>
@@ -116,7 +115,7 @@
             <objects>
                 <viewController id="kUV-uc-xsB" sceneMemberID="viewController">
                     <view key="view" id="Xx2-Xu-G0L">
-                        <rect key="frame" x="0.0" y="0.0" width="480" height="186"/>
+                        <rect key="frame" x="0.0" y="0.0" width="372" height="186"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </view>
                 </viewController>
@@ -293,7 +292,7 @@ Gw
                                 </connections>
                             </button>
                             <button identifier="YouTube" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gV7-9G-ji9">
-                                <rect key="frame" x="14" y="118" width="68" height="32"/>
+                                <rect key="frame" x="14" y="130" width="68" height="32"/>
                                 <buttonCell key="cell" type="push" title="Clear" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="g7N-hT-Jke">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -389,6 +388,29 @@ Gw
                                     <action selector="clearShortcut:" target="XfG-lQ-9wD" id="ex5-Ts-bKr"/>
                                 </connections>
                             </button>
+                            <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pGD-75-XSk">
+                                <rect key="frame" x="14" y="109" width="148" height="32"/>
+                                <buttonCell key="cell" type="push" title="Pick Shortcut" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="EQI-jh-B5N">
+                                    <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="picking:" target="XfG-lQ-9wD" id="rwx-QS-gnp"/>
+                                </connections>
+                            </button>
+                            <button identifier="YouTubeSwitcher" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yj3-LR-yTY">
+                                <rect key="frame" x="14" y="87" width="68" height="32"/>
+                                <buttonCell key="cell" type="push" title="Clear" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="30b-Kb-dKQ">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                    <string key="keyEquivalent" base64-UTF8="YES">
+Gw
+</string>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="clearShortcut:" target="XfG-lQ-9wD" id="O3B-Th-Kz4"/>
+                                </connections>
+                            </button>
                         </subviews>
                     </view>
                     <connections>
@@ -400,6 +422,7 @@ Gw
                         <outlet property="spotifyButton" destination="RIj-xY-jib" id="evz-KA-9x2"/>
                         <outlet property="vlcButton" destination="Sct-EQ-jal" id="C5N-Nc-nmL"/>
                         <outlet property="youTubeButton" destination="aWd-fR-ch5" id="4pX-GN-Llh"/>
+                        <outlet property="youTubeSwitcherButton" destination="pGD-75-XSk" id="xqm-yr-zfS"/>
                     </connections>
                 </viewController>
             </objects>

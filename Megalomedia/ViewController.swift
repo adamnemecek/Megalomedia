@@ -14,14 +14,11 @@ import ServiceManagement
 class ViewController: NSViewController {
     
     // Controller and animation for notifications
-    
-    // WORKING ON IT
-    var testWindowController: NSWindowController?
-    // WORKING ON IT
+    var youTubeSelectorWindowController: NSWindowController? = nil
     var notificationWindowController: NSWindowController? = nil
-    var fadeOut: NSViewAnimation?
     
     // Outlets for checks for enabling notifications and launching app on login, and buttons for choosing new shortcuts
+    @IBOutlet weak var youTubeSwitcherButton: NSButton!
     @IBOutlet weak var enableNotificationsCheck: NSButton!
     @IBOutlet weak var launchOnLoginCheck: NSButton!
     @IBOutlet weak var pauseButton: NSButton!
@@ -55,7 +52,15 @@ class ViewController: NSViewController {
         
         // Clear shortcut of specified app and switch all buttons out of "picking" state
         for (name, details) in appDict {
-            if details.picking {
+            if (name == sender.identifier && !details.picking) || sender.identifier == "ClearAll" {
+                details.button.title = "Pick Shortcut"
+                details.button.state = NSOffState
+                appDict[name] = (details.button, false, "Pick Shortcut", nil)
+                defaults.setObject(nil, forKey: name + "_label")
+                defaults.setInteger(-1, forKey: name + "_keycode")
+                defaults.synchronize()
+            }
+            else if details.picking {
                 details.button.title = details.label
                 details.button.state = NSOffState
                 appDict[name] = (details.button, false, details.label, details.keycode)
@@ -66,14 +71,6 @@ class ViewController: NSViewController {
                         (cancel as! NSButton).title = "Clear"
                     }
                 }
-            }
-            else if name == sender.identifier || sender.identifier == "ClearAll" {
-                details.button.title = "Pick Shortcut"
-                details.button.state = NSOffState
-                appDict[name] = (details.button, false, "Pick Shortcut", nil)
-                defaults.setObject(nil, forKey: name + "_label")
-                defaults.setInteger(-1, forKey: name + "_keycode")
-                defaults.synchronize()
             }
         }
     }
@@ -303,8 +300,14 @@ class ViewController: NSViewController {
                 var path: String?
                 var handler: NSAppleEventDescriptor
                 
+                // Multiple YouTube page switcher
+                if name == "YouTubeSwitcher" {
+                    displayYouTubeTitles()
+                    return
+                }
+                
                 // If universal pause button was pressed
-                if name == "Pause" {
+                else if name == "Pause" {
                     path = NSBundle.mainBundle().pathForResource("UniversalPause", ofType: "scpt")
                     let url = NSURL(fileURLWithPath: path!)
                     let appleScript = NSAppleScript(contentsOfURL: url, error: nil)
@@ -315,11 +318,6 @@ class ViewController: NSViewController {
                     
                 // Otherwise, decide to execute AppleScript for app players or web players
                 else if name == "YouTube" || name == "SoundCloud" {
-                    
-                    // WORKING ON IT
-                    displayYouTubeTitles()
-                    // WORKING ON IT
-                    
                     path = NSBundle.mainBundle().pathForResource("WebPlayPause", ofType: "scpt")
                     handler = NSAppleEventDescriptor(string: "playPauseWeb")
                 }
@@ -350,61 +348,81 @@ class ViewController: NSViewController {
             
             // Handle notifications and animations if new shortcut is pressed while old notification still visible
             if notificationWindowController != nil && notificationWindowController!.window!.visible {
-                fadeOut!.stopAnimation()
                 notificationWindowController!.close()
+            }
+            if youTubeSelectorWindowController != nil && youTubeSelectorWindowController!.window!.visible {
+                youTubeSelectorWindowController!.close()
             }
             notificationWindowController = NSStoryboard(name: "Main", bundle: nil).instantiateControllerWithIdentifier("notificationWindowController") as? NSWindowController
             (notificationWindowController!.window!.contentView!.subviews[0] as! NSImageView).image = NSImage(named: appName + " inverted")
             notificationWindowController!.showWindow(nil)
-            fadeOut = NSViewAnimation(viewAnimations: [[NSViewAnimationTargetKey: notificationWindowController!.window!, NSViewAnimationEffectKey: NSViewAnimationFadeOutEffect]])
-            fadeOut!.duration = 1.5
-            fadeOut!.animationBlockingMode = .Nonblocking
-            fadeOut!.animationCurve = .EaseIn
-            fadeOut!.startAnimation()
+            let fadeOut = NSViewAnimation(viewAnimations: [[NSViewAnimationTargetKey: notificationWindowController!.window!, NSViewAnimationEffectKey: NSViewAnimationFadeOutEffect]])
+            fadeOut.duration = 1.5
+            fadeOut.animationBlockingMode = .Nonblocking
+            fadeOut.animationCurve = .EaseIn
+            fadeOut.startAnimation()
         }
     }
     
-    // WORKING ON IT
+    // FIXME: Clean up
     func displayYouTubeTitles() {
+        if notificationWindowController != nil && notificationWindowController!.window!.visible {
+            notificationWindowController!.close()
+        }
+        if youTubeSelectorWindowController != nil && youTubeSelectorWindowController!.window!.visible {
+            youTubeSelectorWindowController!.close()
+        }
         let path = NSBundle.mainBundle().pathForResource("YouTubeTabCount", ofType: "scpt")
         let url = NSURL(fileURLWithPath: path!)
         let appleScript = NSAppleScript(contentsOfURL: url, error: nil)
         let rawResult = appleScript!.executeAndReturnError(nil)
         var titleArray = [String]()
-        for i in 1...rawResult.numberOfItems {
-            let rawString = rawResult.descriptorAtIndex(i)!.stringValue
-            titleArray.append(rawString!.substringWithRange(rawString!.startIndex.advancedBy(5)..<rawString!.endIndex.advancedBy(-3)))
+        if rawResult.numberOfItems > 0 {
+            for i in 1...rawResult.numberOfItems {
+                let rawString = rawResult.descriptorAtIndex(i)!.stringValue
+                titleArray.append(rawString!)
+            }
+            youTubeSelectorWindowController = NSStoryboard(name: "Main", bundle: nil).instantiateControllerWithIdentifier("YouTubeSwitcherWindowController") as? NSWindowController
+            youTubeSelectorWindowController!.window!.level = Int(CGWindowLevelForKey(CGWindowLevelKey.StatusWindowLevelKey))
+            let selectorFrame = youTubeSelectorWindowController!.window!.contentView!.frame
+            let scrollview = NSScrollView(frame: selectorFrame)
+            scrollview.borderType = .NoBorder
+            scrollview.autoresizingMask = .ViewNotSizable
+            scrollview.contentView = NSClipView(frame: selectorFrame)
+            var docHeight: CGFloat
+            if 32 * rawResult.numberOfItems > Int(selectorFrame.height) {
+                docHeight = CGFloat(32 * rawResult.numberOfItems)
+            }
+            else {
+                docHeight = selectorFrame.height
+            }
+            scrollview.contentView.documentView = YouTubeSelectorView(frame: NSMakeRect(0.0, 0.0, selectorFrame.width, docHeight))
+            var i = 0
+            while i < rawResult.numberOfItems {
+                let text = YouTubeSelectorTextField(frame: NSMakeRect(8.0, 8.0 + (32.0 * CGFloat(i)), selectorFrame.width - 16.0, 16.0), index: i)
+                text.stringValue = titleArray[i]
+                text.lineBreakMode = .ByTruncatingTail
+                scrollview.contentView.documentView!.addTrackingRect(text.frame, owner: text, userData: nil, assumeInside: false)
+                scrollview.contentView.documentView!.addSubview(text)
+                i += 1
+            }
+            scrollview.drawsBackground = false
+            scrollview.verticalScrollElasticity = .None
+            scrollview.hasVerticalScroller = true
+            scrollview.horizontalScrollElasticity = .None
+            scrollview.hasHorizontalScroller = false
+            youTubeSelectorWindowController!.window!.contentView = scrollview
+            notificationWindowController = NSStoryboard(name: "Main", bundle: nil).instantiateControllerWithIdentifier("notificationWindowController") as? NSWindowController
+            (notificationWindowController!.window!.contentView!.subviews[0] as! NSImageView).image = NSImage(named: "YouTube inverted")
+            let notificationOrigin = NSMakePoint(NSScreen.mainScreen()!.frame.midX - ((notificationWindowController!.window!.frame.width + youTubeSelectorWindowController!.window!.frame.width + 30) / 2), NSScreen.mainScreen()!.frame.midY - (notificationWindowController!.window!.frame.height / 2))
+            notificationWindowController!.window!.setFrameOrigin(notificationOrigin)
+            (scrollview.contentView.documentView as! YouTubeSelectorView).notification = notificationWindowController!.window!
+            youTubeSelectorWindowController!.window!.setFrameOrigin(NSMakePoint(notificationWindowController!.window!.frame.maxX + 30, notificationWindowController!.window!.frame.minY))
+            youTubeSelectorWindowController!.window!.ignoresMouseEvents = false
+            notificationWindowController!.showWindow(nil)
+            youTubeSelectorWindowController!.showWindow(nil)
         }
-        testWindowController = NSStoryboard(name: "Main", bundle: nil).instantiateControllerWithIdentifier("test") as? NSWindowController
-        let theFrame = testWindowController!.window!.contentView!.frame
-        let scrollview = NSScrollView(frame: theFrame)
-        scrollview.borderType = .NoBorder
-        scrollview.autoresizingMask = .ViewNotSizable
-        scrollview.contentView = NSClipView(frame: theFrame)
-        var docHeight: CGFloat
-        if (30 * rawResult.numberOfItems) > Int(theFrame.height) {
-            docHeight = CGFloat(30 * rawResult.numberOfItems)
-        }
-        else {
-            docHeight = theFrame.height
-        }
-        scrollview.contentView.documentView = YouTubeSelectorView(frame: NSMakeRect(0.0, 0.0, theFrame.width, docHeight))
-        for i in 0..<rawResult.numberOfItems {
-            let text = NSTextField(frame: NSMakeRect(0.0, 30.0 * CGFloat(i), theFrame.width, 30))
-            text.stringValue = titleArray[i]
-            text.selectable = false
-            text.bordered = false
-            scrollview.contentView.documentView?.addSubview(text)
-        }
-        scrollview.drawsBackground = false
-        scrollview.verticalScrollElasticity = .None
-        scrollview.hasVerticalScroller = true
-        scrollview.horizontalScrollElasticity = .None
-        scrollview.hasHorizontalScroller = false
-        testWindowController!.window!.contentView = scrollview
-        testWindowController!.showWindow(nil)
     }
-    // WORKING ON IT
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -417,6 +435,7 @@ class ViewController: NSViewController {
         appDict["YouTube"] = (youTubeButton, false, "Pick Shortcut", nil)
         appDict["SoundCloud"] = (soundCloudButton, false, "Pick Shortcut", nil)
         appDict["Pause"] = (pauseButton, false, "Pick Shortcut", nil)
+        appDict["YouTubeSwitcher"] = (youTubeSwitcherButton, false, "Pick Shortcut", nil)
         
         // In case user had preferences saved previously, load settings
         for (name, details) in appDict {
@@ -450,4 +469,4 @@ class ViewController: NSViewController {
     }
 }
 
-// forward and backwards skip, YouTube multiple pages problem
+// TODO: forward and backwards skip

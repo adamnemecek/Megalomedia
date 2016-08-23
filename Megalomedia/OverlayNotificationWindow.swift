@@ -21,18 +21,6 @@ class OverlayNotificationWindow: NSWindow {
         self.ignoresMouseEvents = true
     }
     
-    override var canBecomeMainWindow: Bool {
-        get {
-            return false
-        }
-    }
-    
-    override var canBecomeKeyWindow: Bool {
-        get {
-            return false
-        }
-    }
-    
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
