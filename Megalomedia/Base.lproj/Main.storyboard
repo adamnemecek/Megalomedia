@@ -60,7 +60,7 @@
                     <window key="window" title="Megalomedia - About" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="lNS-gP-cbs">
                         <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
                         <rect key="contentRect" x="196" y="249" width="526" height="270"/>
-                        <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
                         <value key="minSize" type="size" width="526" height="270"/>
                         <value key="maxSize" type="size" width="526" height="270"/>
                     </window>
@@ -76,8 +76,8 @@
         <scene sceneID="ED9-dw-lmt">
             <objects>
                 <windowController storyboardIdentifier="notificationWindowController" id="jEb-5e-fRP" sceneMemberID="viewController">
-                    <window key="window" title="Window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="8TC-NJ-iUD" customClass="OverlayNotificationWindow" customModule="Megalomedia" customModuleProvider="target">
-                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES"/>
+                    <window key="window" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="8TC-NJ-iUD" customClass="OverlayNotificationWindow" customModule="Megalomedia" customModuleProvider="target">
+                        <windowStyleMask key="styleMask" closable="YES" miniaturizable="YES"/>
                         <rect key="contentRect" x="1000" y="249" width="186" height="186"/>
                         <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
                         <value key="minSize" type="size" width="186" height="186"/>
@@ -89,7 +89,7 @@
                 </windowController>
                 <customObject id="8yu-5p-303" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1044" y="220"/>
+            <point key="canvasLocation" x="1044" y="208"/>
         </scene>
         <!--Window Controller-->
         <scene sceneID="rUJ-3g-oJm">
@@ -108,7 +108,71 @@
                 </windowController>
                 <customObject id="Tvs-DX-XGt" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1452" y="262"/>
+            <point key="canvasLocation" x="1358" y="188"/>
+        </scene>
+        <!--Window Controller-->
+        <scene sceneID="tai-cb-f2g">
+            <objects>
+                <windowController storyboardIdentifier="helpWindowController" id="EHK-lX-zm8" sceneMemberID="viewController">
+                    <window key="window" title="Megalomedia - Help" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="pF5-SV-aRE">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <rect key="contentRect" x="196" y="240" width="526" height="295"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1440" height="877"/>
+                        <value key="minSize" type="size" width="526" height="295"/>
+                        <value key="maxSize" type="size" width="526" height="295"/>
+                    </window>
+                    <connections>
+                        <segue destination="sJi-A5-57O" kind="relationship" relationship="window.shadowedContentViewController" id="JSu-MF-SNC"/>
+                    </connections>
+                </windowController>
+                <customObject id="drr-89-TqH" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1838" y="250"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="2ai-u0-sXb">
+            <objects>
+                <viewController id="sJi-A5-57O" sceneMemberID="viewController">
+                    <view key="view" id="sXi-PW-j30">
+                        <rect key="frame" x="0.0" y="0.0" width="526" height="295"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="ylh-th-bso">
+                                <rect key="frame" x="18" y="245" width="56" height="30"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="Help" id="pZB-Vg-qp6">
+                                    <font key="font" metaFont="system" size="25"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gDc-Kc-ZxR">
+                                <rect key="frame" x="18" y="20" width="495" height="210"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" id="FM3-Mv-ABc">
+                                    <font key="font" metaFont="smallSystem"/>
+                                    <string key="title">Shortcuts can be any combination, including none, of modifier keys (Shift, Function, Control,
+Option, Command) and any other single non-modifier key.
+
+The Pause-symbol shortcut (bottom-right) pauses all playing instances of the other five
+players.
+
+The first YouTube shortcut plays/pauses the first YouTube page open, with Safari pages being
+counted before Chrome pages. The second opens a scrolling window with buttons that allow
+you to play/pause any of the open pages.
+ Make sure JavaScript from Apple Events is allowed in Safari!
+Safari -&gt; Preferences -&gt; Advanced -&gt; Check "Show Develop menu in menu bar"
+Develop -&gt; Check "Allow JavaScript from Apple Events"
+
+For YouTube and SoundCloud, only Safari and Chrome are compatible.</string>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                    </view>
+                </viewController>
+                <customObject id="0AO-io-2lI" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1838" y="751.5"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="Pcn-NR-jmT">
@@ -121,7 +185,7 @@
                 </viewController>
                 <customObject id="5Bg-7Z-NQD" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1452" y="751"/>
+            <point key="canvasLocation" x="1353" y="690"/>
         </scene>
         <!--View Controller-->
         <scene sceneID="G5e-5m-6Hp">
@@ -292,7 +356,7 @@ Gw
                                 </connections>
                             </button>
                             <button identifier="YouTube" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="gV7-9G-ji9">
-                                <rect key="frame" x="14" y="130" width="68" height="32"/>
+                                <rect key="frame" x="14" y="118" width="68" height="32"/>
                                 <buttonCell key="cell" type="push" title="Clear" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="g7N-hT-Jke">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -359,7 +423,7 @@ Gw
                                 </connections>
                             </button>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Nnd-wv-onz">
-                                <rect key="frame" x="18" y="75" width="207" height="18"/>
+                                <rect key="frame" x="301" y="21" width="207" height="18"/>
                                 <buttonCell key="cell" type="check" title="Launch Megalomedia on Login" bezelStyle="regularSquare" imagePosition="left" inset="2" id="3Ci-c6-pKJ">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -369,7 +433,7 @@ Gw
                                 </connections>
                             </button>
                             <button fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Bwq-91-O1W">
-                                <rect key="frame" x="18" y="45" width="207" height="18"/>
+                                <rect key="frame" x="301" y="54" width="207" height="18"/>
                                 <buttonCell key="cell" type="check" title="Enable notifications" bezelStyle="regularSquare" imagePosition="left" inset="2" id="7Ww-gC-L0V">
                                     <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -378,18 +442,8 @@ Gw
                                     <action selector="toggleEnableNotifications:" target="XfG-lQ-9wD" id="hbc-7R-smU"/>
                                 </connections>
                             </button>
-                            <button identifier="ClearAll" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Yn-SY-jwk">
-                                <rect key="frame" x="434" y="70" width="78" height="32"/>
-                                <buttonCell key="cell" type="push" title="Clear All" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="swV-Ee-PYv">
-                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
-                                    <font key="font" metaFont="system"/>
-                                </buttonCell>
-                                <connections>
-                                    <action selector="clearShortcut:" target="XfG-lQ-9wD" id="ex5-Ts-bKr"/>
-                                </connections>
-                            </button>
                             <button verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="pGD-75-XSk">
-                                <rect key="frame" x="14" y="109" width="148" height="32"/>
+                                <rect key="frame" x="14" y="71" width="148" height="32"/>
                                 <buttonCell key="cell" type="push" title="Pick Shortcut" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="EQI-jh-B5N">
                                     <behavior key="behavior" lightByBackground="YES" lightByGray="YES" changeBackground="YES" changeGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -399,7 +453,7 @@ Gw
                                 </connections>
                             </button>
                             <button identifier="YouTubeSwitcher" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yj3-LR-yTY">
-                                <rect key="frame" x="14" y="87" width="68" height="32"/>
+                                <rect key="frame" x="14" y="38" width="68" height="32"/>
                                 <buttonCell key="cell" type="push" title="Clear" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="30b-Kb-dKQ">
                                     <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
                                     <font key="font" metaFont="system"/>
@@ -409,6 +463,32 @@ Gw
                                 </buttonCell>
                                 <connections>
                                     <action selector="clearShortcut:" target="XfG-lQ-9wD" id="O3B-Th-Kz4"/>
+                                </connections>
+                            </button>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="hjP-yE-AdD">
+                                <rect key="frame" x="34" y="180" width="108" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="(First page open)" id="qYQ-g1-p9B">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="GXs-hf-ODd">
+                                <rect key="frame" x="20" y="100" width="136" height="17"/>
+                                <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="center" title="(Select specific page)" id="2JN-Tg-Wod">
+                                    <font key="font" metaFont="system"/>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <button identifier="ClearAll" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Yn-SY-jwk">
+                                <rect key="frame" x="297" y="79" width="78" height="32"/>
+                                <buttonCell key="cell" type="push" title="Clear All" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="swV-Ee-PYv">
+                                    <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                                    <font key="font" metaFont="system"/>
+                                </buttonCell>
+                                <connections>
+                                    <action selector="clearShortcut:" target="XfG-lQ-9wD" id="ex5-Ts-bKr"/>
                                 </connections>
                             </button>
                         </subviews>

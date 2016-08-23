@@ -24,6 +24,9 @@
 		64A21E7B1D4BBFAE00DE2122 /* OverlayNotificationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64A21E7A1D4BBFAE00DE2122 /* OverlayNotificationView.swift */; };
 		64BA452D1D1B102800B49B27 /* PreferenceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64BA452C1D1B102800B49B27 /* PreferenceView.swift */; };
 		64C2F6AD1D2D56E6006A8532 /* WebPlayPause.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 64C2F6AC1D2D56E5006A8532 /* WebPlayPause.scpt */; };
+		64C4E62B1D6CC6A40075680B /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64C4E62A1D6CC6A40075680B /* ServiceManagement.framework */; };
+		64C4E62D1D6CC6AE0075680B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64C4E62C1D6CC6AE0075680B /* Cocoa.framework */; };
+		64D0F1581D6CE5410015F6C1 /* SafariAllowJavaScript (not used).scpt in Resources */ = {isa = PBXBuildFile; fileRef = 64D0F1571D6CE5410015F6C1 /* SafariAllowJavaScript (not used).scpt */; };
 		64F0618E1D56E21E0019AF85 /* YouTubeTabCount.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 64F0618D1D56E21E0019AF85 /* YouTubeTabCount.scpt */; };
 /* End PBXBuildFile section */
 
@@ -72,6 +75,11 @@
 		64A21E7A1D4BBFAE00DE2122 /* OverlayNotificationView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OverlayNotificationView.swift; sourceTree = "<group>"; };
 		64BA452C1D1B102800B49B27 /* PreferenceView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PreferenceView.swift; sourceTree = "<group>"; };
 		64C2F6AC1D2D56E5006A8532 /* WebPlayPause.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = WebPlayPause.scpt; sourceTree = "<group>"; };
+		64C4E6281D6CC6100075680B /* Megalomedia.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = Megalomedia.entitlements; sourceTree = "<group>"; };
+		64C4E6291D6CC61C0075680B /* MegalomediaHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = MegalomediaHelper.entitlements; sourceTree = "<group>"; };
+		64C4E62A1D6CC6A40075680B /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
+		64C4E62C1D6CC6AE0075680B /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
+		64D0F1571D6CE5410015F6C1 /* SafariAllowJavaScript (not used).scpt */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SafariAllowJavaScript (not used).scpt"; path = "../../../../Desktop/SafariAllowJavaScript (not used).scpt"; sourceTree = "<group>"; };
 		64F0618D1D56E21E0019AF85 /* YouTubeTabCount.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = YouTubeTabCount.scpt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -87,6 +95,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				64C4E62D1D6CC6AE0075680B /* Cocoa.framework in Frameworks */,
+				64C4E62B1D6CC6A40075680B /* ServiceManagement.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -103,6 +113,7 @@
 		6468E1821D414EDC00D64694 /* MegalomediaHelper */ = {
 			isa = PBXGroup;
 			children = (
+				64C4E6291D6CC61C0075680B /* MegalomediaHelper.entitlements */,
 				6468E1831D414EDC00D64694 /* AppDelegate.swift */,
 				6468E1851D414EDC00D64694 /* Assets.xcassets */,
 				6468E1871D414EDC00D64694 /* MainMenu.xib */,
@@ -114,6 +125,8 @@
 		646F163B1D183D8900D3EF81 = {
 			isa = PBXGroup;
 			children = (
+				64C4E62C1D6CC6AE0075680B /* Cocoa.framework */,
+				64C4E62A1D6CC6A40075680B /* ServiceManagement.framework */,
 				646F16461D183D8900D3EF81 /* Megalomedia */,
 				6468E1821D414EDC00D64694 /* MegalomediaHelper */,
 				646F16451D183D8900D3EF81 /* Products */,
@@ -133,23 +146,33 @@
 		646F16461D183D8900D3EF81 /* Megalomedia */ = {
 			isa = PBXGroup;
 			children = (
+				64C4E6281D6CC6100075680B /* Megalomedia.entitlements */,
 				646F16471D183D8900D3EF81 /* AppDelegate.swift */,
 				646F16491D183D8900D3EF81 /* ViewController.swift */,
 				646E8E361D5A6B60006D900B /* YouTubeSelectorTextField.swift */,
 				64103AC21D5961CD00533330 /* YouTubeSelectorView.swift */,
-				64F0618D1D56E21E0019AF85 /* YouTubeTabCount.scpt */,
-				64262BB41D5AA2A10005BFCE /* YouTubeSelection.scpt */,
 				64BA452C1D1B102800B49B27 /* PreferenceView.swift */,
-				6400D0F51D280B4500B219CD /* AppPlayPause.scpt */,
-				64C2F6AC1D2D56E5006A8532 /* WebPlayPause.scpt */,
-				64352E2E1D315A4E00758185 /* UniversalPause.scpt */,
+				64A21E7A1D4BBFAE00DE2122 /* OverlayNotificationView.swift */,
+				64A21E781D4B9DD700DE2122 /* OverlayNotificationWindow.swift */,
+				64D0F1591D6CE55D0015F6C1 /* Scripts */,
 				64352E301D315F1D00758185 /* Assets.xcassets */,
 				646F164D1D183D8900D3EF81 /* Main.storyboard */,
-				64A21E781D4B9DD700DE2122 /* OverlayNotificationWindow.swift */,
-				64A21E7A1D4BBFAE00DE2122 /* OverlayNotificationView.swift */,
 				646F16501D183D8900D3EF81 /* Info.plist */,
 			);
 			path = Megalomedia;
+			sourceTree = "<group>";
+		};
+		64D0F1591D6CE55D0015F6C1 /* Scripts */ = {
+			isa = PBXGroup;
+			children = (
+				6400D0F51D280B4500B219CD /* AppPlayPause.scpt */,
+				64C2F6AC1D2D56E5006A8532 /* WebPlayPause.scpt */,
+				64F0618D1D56E21E0019AF85 /* YouTubeTabCount.scpt */,
+				64262BB41D5AA2A10005BFCE /* YouTubeSelection.scpt */,
+				64352E2E1D315A4E00758185 /* UniversalPause.scpt */,
+				64D0F1571D6CE5410015F6C1 /* SafariAllowJavaScript (not used).scpt */,
+			);
+			name = Scripts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -220,9 +243,21 @@
 				TargetAttributes = {
 					6468E1801D414EDC00D64694 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 2TL5Q3XF2A;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 					646F16431D183D8900D3EF81 = {
 						CreatedOnToolsVersion = 7.3.1;
+						DevelopmentTeam = 2TL5Q3XF2A;
+						SystemCapabilities = {
+							com.apple.Sandbox = {
+								enabled = 1;
+							};
+						};
 					};
 					646F16541D183D8900D3EF81 = {
 						CreatedOnToolsVersion = 7.3.1;
@@ -270,6 +305,7 @@
 				64C2F6AD1D2D56E6006A8532 /* WebPlayPause.scpt in Resources */,
 				64F0618E1D56E21E0019AF85 /* YouTubeTabCount.scpt in Resources */,
 				64352E2F1D315A4E00758185 /* UniversalPause.scpt in Resources */,
+				64D0F1581D6CE5410015F6C1 /* SafariAllowJavaScript (not used).scpt in Resources */,
 				64352E311D315F1D00758185 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -347,11 +383,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MegalomediaHelper/MegalomediaHelper.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = MegalomediaHelper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.justinshi.MegalomediaHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Debug;
@@ -360,11 +400,15 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = MegalomediaHelper/MegalomediaHelper.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
+				"CODE_SIGN_IDENTITY[sdk=macosx*]" = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = MegalomediaHelper/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.justinshi.MegalomediaHelper;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
 				SKIP_INSTALL = YES;
 			};
 			name = Release;
@@ -455,6 +499,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Megalomedia/Megalomedia.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Megalomedia/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";
@@ -467,6 +513,8 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = Megalomedia/Megalomedia.entitlements;
+				CODE_SIGN_IDENTITY = "Mac Developer";
 				COMBINE_HIDPI_IMAGES = YES;
 				INFOPLIST_FILE = Megalomedia/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/../Frameworks";

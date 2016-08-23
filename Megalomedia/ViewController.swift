@@ -469,4 +469,4 @@ class ViewController: NSViewController {
     }
 }
 
-// TODO: forward and backwards skip
+// TODO: forward and backwards skip, contact information, acknowledgements and legal stuff

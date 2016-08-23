@@ -16,6 +16,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     let statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(NSSquareStatusItemLength)
     var preferenceController: NSWindowController?
     var aboutController: NSWindowController?
+    var helpController: NSWindowController?
     
     // Number of windows open - hide application when 0
     var nWindowsOpen = 0
@@ -25,15 +26,21 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         // Instantiate controller, set delegate for window (to handle window closing actions), set window level, set status bar and menu items
         self.preferenceController = self.storyboard.instantiateControllerWithIdentifier("preferenceWindowController") as? NSWindowController
         self.aboutController = self.storyboard.instantiateControllerWithIdentifier("aboutWindowController") as? NSWindowController
+        self.helpController = self.storyboard.instantiateControllerWithIdentifier("helpWindowController") as? NSWindowController
         self.preferenceController!.window!.level = Int(CGWindowLevelForKey(CGWindowLevelKey.FloatingWindowLevelKey))
         self.aboutController!.window!.level = Int(CGWindowLevelForKey(CGWindowLevelKey.FloatingWindowLevelKey))
+        self.helpController!.window!.level = Int(CGWindowLevelForKey(CGWindowLevelKey.FloatingWindowLevelKey))
         self.preferenceController!.window!.delegate = self
         self.aboutController!.window!.delegate = self
+        self.helpController!.window!.delegate = self
         let button = self.statusItem.button
         button!.image = NSImage(named: "StatusBarButtonImage")
         let menu = NSMenu()
         menu.addItem(NSMenuItem(title: "About Megalomedia", action: #selector(openAboutWindow), keyEquivalent: ""))
+        menu.addItem(NSMenuItem(title: "Help", action: #selector(openHelpWindow), keyEquivalent: ""))
+        menu.addItem(NSMenuItem.separatorItem())
         menu.addItem(NSMenuItem(title: "Preferences", action: #selector(openPreferencesWindow), keyEquivalent: ""))
+        menu.addItem(NSMenuItem.separatorItem())
         menu.addItem(NSMenuItem(title: "Quit Megalomedia", action: #selector(exitApp), keyEquivalent: ""))
         statusItem.menu = menu
     }
@@ -47,6 +54,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     func openAboutWindow(sender: AnyObject) {
         nWindowsOpen += 1
         self.aboutController!.showWindow(nil)
+        NSApplication.sharedApplication().activateIgnoringOtherApps(true)
+    }
+    
+    func openHelpWindow(sender: AnyObject) {
+        nWindowsOpen += 1
+        self.helpController!.showWindow(nil)
         NSApplication.sharedApplication().activateIgnoringOtherApps(true)
     }
     

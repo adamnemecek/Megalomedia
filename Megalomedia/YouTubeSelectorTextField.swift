@@ -58,7 +58,6 @@ class YouTubeSelectorTextField: NSTextField {
         selectorWindowFadeOut.animationCurve = .EaseIn
         selectorWindowFadeOut.startAnimation()
         self.window!.close()
-        NSApplication.sharedApplication().hide(nil)
     }
     
     // Underline text when mouse hovers over
