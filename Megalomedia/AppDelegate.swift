@@ -16,6 +16,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     let statusItem = NSStatusBar.systemStatusBar().statusItemWithLength(NSSquareStatusItemLength)
     var preferenceController: NSWindowController?
     var aboutController: NSWindowController?
+    var acknowledgementsController: NSWindowController?
     var helpController: NSWindowController?
     
     // Number of windows open - hide application when 0
@@ -27,17 +28,21 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
         self.preferenceController = self.storyboard.instantiateControllerWithIdentifier("preferenceWindowController") as? NSWindowController
         self.aboutController = self.storyboard.instantiateControllerWithIdentifier("aboutWindowController") as? NSWindowController
         self.helpController = self.storyboard.instantiateControllerWithIdentifier("helpWindowController") as? NSWindowController
+        self.acknowledgementsController = self.storyboard.instantiateControllerWithIdentifier("acknowledgementsWindowController") as? NSWindowController
         self.preferenceController!.window!.level = Int(CGWindowLevelForKey(CGWindowLevelKey.FloatingWindowLevelKey))
         self.aboutController!.window!.level = Int(CGWindowLevelForKey(CGWindowLevelKey.FloatingWindowLevelKey))
         self.helpController!.window!.level = Int(CGWindowLevelForKey(CGWindowLevelKey.FloatingWindowLevelKey))
+        self.acknowledgementsController!.window!.level = Int(CGWindowLevelForKey(CGWindowLevelKey.FloatingWindowLevelKey))
         self.preferenceController!.window!.delegate = self
         self.aboutController!.window!.delegate = self
         self.helpController!.window!.delegate = self
+        self.acknowledgementsController!.window!.delegate = self
         let button = self.statusItem.button
         button!.image = NSImage(named: "StatusBarButtonImage")
         let menu = NSMenu()
         menu.addItem(NSMenuItem(title: "About Megalomedia", action: #selector(openAboutWindow), keyEquivalent: ""))
         menu.addItem(NSMenuItem(title: "Help", action: #selector(openHelpWindow), keyEquivalent: ""))
+        menu.addItem(NSMenuItem(title: "Acknowledgements", action: #selector(openAcknowledgementsWindow), keyEquivalent: ""))
         menu.addItem(NSMenuItem.separatorItem())
         menu.addItem(NSMenuItem(title: "Preferences", action: #selector(openPreferencesWindow), keyEquivalent: ""))
         menu.addItem(NSMenuItem.separatorItem())
@@ -47,6 +52,9 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     
     func openPreferencesWindow(sender: AnyObject) {
         nWindowsOpen += 1
+        
+        // Prompt user for accessibility access if not allowed and set monitors for keypresses
+        AXIsProcessTrustedWithOptions([kAXTrustedCheckOptionPrompt.takeUnretainedValue() as String: true])
         self.preferenceController!.showWindow(nil)
         NSApplication.sharedApplication().activateIgnoringOtherApps(true)
     }
@@ -54,6 +62,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSWindowDelegate {
     func openAboutWindow(sender: AnyObject) {
         nWindowsOpen += 1
         self.aboutController!.showWindow(nil)
+        NSApplication.sharedApplication().activateIgnoringOtherApps(true)
+    }
+    
+    func openAcknowledgementsWindow(sender: AnyObject) {
+        nWindowsOpen += 1
+        self.acknowledgementsController!.showWindow(nil)
         NSApplication.sharedApplication().activateIgnoringOtherApps(true)
     }
     

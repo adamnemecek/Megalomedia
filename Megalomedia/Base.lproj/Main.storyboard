@@ -206,6 +206,134 @@ For YouTube and SoundCloud, only Safari and Chrome are compatible.</string>
             </objects>
             <point key="canvasLocation" x="1044" y="690"/>
         </scene>
+        <!--Window Controller-->
+        <scene sceneID="5BM-ka-YWS">
+            <objects>
+                <windowController storyboardIdentifier="acknowledgementsWindowController" id="0iZ-iQ-72N" sceneMemberID="viewController">
+                    <window key="window" title="Megalomedia - Acknowledgements" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" oneShot="NO" releasedWhenClosed="NO" showsToolbarButton="NO" visibleAtLaunch="NO" frameAutosaveName="" animationBehavior="default" id="rTO-Nb-mhy">
+                        <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
+                        <rect key="contentRect" x="458" y="157" width="526" height="551"/>
+                        <rect key="screenRect" x="0.0" y="0.0" width="1440" height="900"/>
+                        <value key="minSize" type="size" width="526" height="551"/>
+                        <value key="maxSize" type="size" width="526" height="551"/>
+                    </window>
+                    <connections>
+                        <segue destination="TIt-4F-LdQ" kind="relationship" relationship="window.shadowedContentViewController" id="0Rt-cN-tCh"/>
+                    </connections>
+                </windowController>
+                <customObject id="H7c-OO-4Xn" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="645" y="1230.5"/>
+        </scene>
+        <!--View Controller-->
+        <scene sceneID="ADm-H3-ajn">
+            <objects>
+                <customObject id="0iW-q0-U6E" userLabel="First Responder" customClass="NSResponder" sceneMemberID="firstResponder"/>
+                <viewController id="TIt-4F-LdQ" sceneMemberID="viewController">
+                    <view key="view" id="8xf-kz-pvc">
+                        <rect key="frame" x="0.0" y="0.0" width="526" height="551"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <subviews>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Apj-yg-2bN">
+                                <rect key="frame" x="20" y="461" width="486" height="71"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" id="JCa-8L-dhT">
+                                    <font key="font" metaFont="system" size="8"/>
+                                    <string key="title">VideoLAN (VLC) Logo:
+Copyright (c) 1996-2013 VideoLAN. This logo or a modified version may be used or modified by anyone to refer to the VideoLAN project or any product developed by the VideoLAN team, but does not indicate endorsement by the project. Logo created by user Dakirby309, obtained from https://www.iconfinder.com/icons/98103/media_player_vlc_icon. Changes were made to logo color. Usage allowed under Creative Commons license (https://creativecommons.org/licenses/by-nc/3.0/).
+</string>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Hb7-tQ-2AV">
+                                <rect key="frame" x="21" y="391" width="486" height="60"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" id="TXa-f5-Wg1">
+                                    <font key="font" metaFont="system" size="8"/>
+                                    <string key="title">Spotify Logo:
+Spotify and the Spotify Logo are the sole property of Spotify Ltd. Usage of the Spotify logo does not indicate endorsement of this application by Spotify Ltd. The Spotify Logo is used as allowed by the limited license specified in Spotify Developer Terms of Use Version 2.1 (https://developer.spotify.com/developer-terms-of-use/#section-iii-licenses-and-permissions), Section III, 1d (Spotify Marks), provided by Spotify Ltd.
+</string>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="4Eg-AY-PPb">
+                                <rect key="frame" x="21" y="332" width="488" height="49"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" id="Xyw-8t-1kw">
+                                    <font key="font" metaFont="system" size="8"/>
+                                    <string key="title">YouTube Icon:
+YouTube and the YouTube Icon are the property of YouTube, LLC. Usage of the YouTube logo does not indicate endorsement of this application by YouTube, LLC. YouTube Icon used as allowed according to specifications provided in Branding Guidelines (https://developers.google.com/youtube/branding_guidelines), provided by YouTube, LLC.
+</string>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="TYm-ui-DkY">
+                                <rect key="frame" x="21" y="284" width="489" height="38"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" id="NEn-X0-k3c">
+                                    <font key="font" metaFont="system" size="8"/>
+                                    <string key="title">iTunes Logo:
+iTunes and the iTunes logo are trademarks and property of Apple Inc., registered in the U.S. and other countries. Usage of the iTunes logo does not indicate endorsement of this application by Apple Inc. </string>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="wT5-dB-Kj6">
+                                <rect key="frame" x="20" y="225" width="489" height="49"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" id="Zdt-9y-eKE">
+                                    <font key="font" metaFont="system" size="8"/>
+                                    <string key="title">SoundCloud Logo:
+The SoundCloud logo is the property of SoundCloud. Usage of the SoundCloud logo does not indicate endorsement of this application by SoundCloud. SoundCloud icon used as allowed according to Terms of Use (https://developers.soundcloud.com/docs/api/terms-of-use#branding) provided by SoundCloud.</string>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jkD-aC-eJJ">
+                                <rect key="frame" x="21" y="188" width="489" height="27"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" id="oNE-dp-l84">
+                                    <font key="font" metaFont="system" size="8"/>
+                                    <string key="title">Code for calling AppleScript from Swift with parameters:
+Credit to GitHub user odrobnik, obtained from https://gist.github.com/odrobnik/e8ac59e13b62ea80b623</string>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="u07-uz-N2y">
+                                <rect key="frame" x="21" y="140" width="489" height="38"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" id="IXc-dS-P2O">
+                                    <font key="font" metaFont="system" size="8"/>
+                                    <string key="title">Code for transparent overlay notifications:
+Credit to Matt Gemmell, obtained from http://mattgemmell.com/files/source/ (RoundedFloatingPanel), modified and translated from Objective-C. Usage allowed under Source Code License (http://mattgemmell.com/license/).</string>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="rqz-DB-kSt">
+                                <rect key="frame" x="21" y="70" width="489" height="60"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" id="8BH-R0-wTz">
+                                    <font key="font" metaFont="system" size="8"/>
+                                    <string key="title">Code for prompt to allow app to control computer in Security &amp; Privacy/Accessibility of System Preferences:
+Credit to Stack Overflow user Marco Pashkov, obtained from http://stackoverflow.com/questions/27463394/handling-cocoa-key-events-keys-pressed-with-swift-in-a-console-application.
+Entitlements problem solution obtained from http://qtask.net/57815/temporary-entitlements-axisprocesstrustedwithoptions, from user admin</string>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                            <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="xvw-Xr-HYD">
+                                <rect key="frame" x="21" y="20" width="489" height="40"/>
+                                <textFieldCell key="cell" sendsActionOnEndEditing="YES" borderStyle="bezel" alignment="center" id="OvI-h1-tk0">
+                                    <font key="font" metaFont="system" size="8"/>
+                                    <string key="title">Code for helper application to launch main application on login:
+Credit to Tibor Bödecs, obtained from https://theswiftdev.com/2015/09/17/first-os-x-tutorial-how-to-launch-an-os-x-app-at-login/.</string>
+                                    <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                    <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                </textFieldCell>
+                            </textField>
+                        </subviews>
+                    </view>
+                </viewController>
+            </objects>
+            <point key="canvasLocation" x="1244" y="1230.5"/>
+        </scene>
         <!--View Controller-->
         <scene sceneID="Bp7-lq-eBj">
             <objects>
@@ -215,7 +343,7 @@ For YouTube and SoundCloud, only Safari and Chrome are compatible.</string>
                         <autoresizingMask key="autoresizingMask"/>
                         <subviews>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="eLf-Wu-RqY">
-                                <rect key="frame" x="18" y="220" width="228" height="30"/>
+                                <rect key="frame" x="18" y="209" width="228" height="30"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" title="About Megalomedia" id="P36-mI-ZRo">
                                     <font key="font" metaFont="system" size="25"/>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
@@ -223,7 +351,7 @@ For YouTube and SoundCloud, only Safari and Chrome are compatible.</string>
                                 </textFieldCell>
                             </textField>
                             <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="iee-sP-LlG">
-                                <rect key="frame" x="18" y="42" width="363" height="170"/>
+                                <rect key="frame" x="18" y="31" width="363" height="170"/>
                                 <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" id="Mxi-Df-NoT">
                                     <font key="font" metaFont="system"/>
                                     <string key="title">Megalomedia is an application that
@@ -233,15 +361,13 @@ buttons of your favorite media players,
 as well as assign a button that pauses
 all media at once. Compatibility with
 more players to be added in future
-updates, or upon request. Web player
-functionality compatible with Safari and
-Chrome.</string>
+updates, or upon request.</string>
                                     <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
                                 </textFieldCell>
                             </textField>
                             <imageView horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="DtC-JJ-pRe">
-                                <rect key="frame" x="350" y="88" width="95" height="95"/>
+                                <rect key="frame" x="411" y="88" width="95" height="95"/>
                                 <imageCell key="cell" refusesFirstResponder="YES" alignment="left" imageScaling="proportionallyDown" image="Pause" id="4oB-9a-m1I"/>
                             </imageView>
                         </subviews>
@@ -511,7 +637,7 @@ Gw
     </scenes>
     <resources>
         <image name="Pause" width="128" height="128"/>
-        <image name="SoundCloud" width="240" height="120"/>
+        <image name="SoundCloud" width="128" height="86"/>
         <image name="Spotify" width="170.16000366210938" height="170.16000366210938"/>
         <image name="VLC" width="128" height="128"/>
         <image name="YouTube" width="1024" height="721"/>

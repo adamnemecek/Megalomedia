@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		6400D0F61D280B4500B219CD /* AppPlayPause.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 6400D0F51D280B4500B219CD /* AppPlayPause.scpt */; };
+		640791531D6D49880062C256 /* SafariAllowJavaScript (not used).scpt in Resources */ = {isa = PBXBuildFile; fileRef = 640791521D6D49880062C256 /* SafariAllowJavaScript (not used).scpt */; };
 		64103AC31D5961CD00533330 /* YouTubeSelectorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 64103AC21D5961CD00533330 /* YouTubeSelectorView.swift */; };
 		64262BB51D5AA2A10005BFCE /* YouTubeSelection.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 64262BB41D5AA2A10005BFCE /* YouTubeSelection.scpt */; };
 		64352E2F1D315A4E00758185 /* UniversalPause.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 64352E2E1D315A4E00758185 /* UniversalPause.scpt */; };
@@ -26,7 +27,6 @@
 		64C2F6AD1D2D56E6006A8532 /* WebPlayPause.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 64C2F6AC1D2D56E5006A8532 /* WebPlayPause.scpt */; };
 		64C4E62B1D6CC6A40075680B /* ServiceManagement.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64C4E62A1D6CC6A40075680B /* ServiceManagement.framework */; };
 		64C4E62D1D6CC6AE0075680B /* Cocoa.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 64C4E62C1D6CC6AE0075680B /* Cocoa.framework */; };
-		64D0F1581D6CE5410015F6C1 /* SafariAllowJavaScript (not used).scpt in Resources */ = {isa = PBXBuildFile; fileRef = 64D0F1571D6CE5410015F6C1 /* SafariAllowJavaScript (not used).scpt */; };
 		64F0618E1D56E21E0019AF85 /* YouTubeTabCount.scpt in Resources */ = {isa = PBXBuildFile; fileRef = 64F0618D1D56E21E0019AF85 /* YouTubeTabCount.scpt */; };
 /* End PBXBuildFile section */
 
@@ -55,6 +55,7 @@
 
 /* Begin PBXFileReference section */
 		6400D0F51D280B4500B219CD /* AppPlayPause.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = AppPlayPause.scpt; sourceTree = "<group>"; };
+		640791521D6D49880062C256 /* SafariAllowJavaScript (not used).scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SafariAllowJavaScript (not used).scpt"; sourceTree = "<group>"; };
 		64103AC21D5961CD00533330 /* YouTubeSelectorView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = YouTubeSelectorView.swift; sourceTree = "<group>"; };
 		64262BB41D5AA2A10005BFCE /* YouTubeSelection.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = YouTubeSelection.scpt; sourceTree = "<group>"; };
 		64352E2E1D315A4E00758185 /* UniversalPause.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = UniversalPause.scpt; sourceTree = "<group>"; };
@@ -79,7 +80,6 @@
 		64C4E6291D6CC61C0075680B /* MegalomediaHelper.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.xml; path = MegalomediaHelper.entitlements; sourceTree = "<group>"; };
 		64C4E62A1D6CC6A40075680B /* ServiceManagement.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = ServiceManagement.framework; path = System/Library/Frameworks/ServiceManagement.framework; sourceTree = SDKROOT; };
 		64C4E62C1D6CC6AE0075680B /* Cocoa.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Cocoa.framework; path = System/Library/Frameworks/Cocoa.framework; sourceTree = SDKROOT; };
-		64D0F1571D6CE5410015F6C1 /* SafariAllowJavaScript (not used).scpt */ = {isa = PBXFileReference; lastKnownFileType = file; name = "SafariAllowJavaScript (not used).scpt"; path = "../../../../Desktop/SafariAllowJavaScript (not used).scpt"; sourceTree = "<group>"; };
 		64F0618D1D56E21E0019AF85 /* YouTubeTabCount.scpt */ = {isa = PBXFileReference; lastKnownFileType = file; path = YouTubeTabCount.scpt; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -170,7 +170,7 @@
 				64F0618D1D56E21E0019AF85 /* YouTubeTabCount.scpt */,
 				64262BB41D5AA2A10005BFCE /* YouTubeSelection.scpt */,
 				64352E2E1D315A4E00758185 /* UniversalPause.scpt */,
-				64D0F1571D6CE5410015F6C1 /* SafariAllowJavaScript (not used).scpt */,
+				640791521D6D49880062C256 /* SafariAllowJavaScript (not used).scpt */,
 			);
 			name = Scripts;
 			sourceTree = "<group>";
@@ -303,9 +303,9 @@
 				6400D0F61D280B4500B219CD /* AppPlayPause.scpt in Resources */,
 				646F164F1D183D8900D3EF81 /* Main.storyboard in Resources */,
 				64C2F6AD1D2D56E6006A8532 /* WebPlayPause.scpt in Resources */,
+				640791531D6D49880062C256 /* SafariAllowJavaScript (not used).scpt in Resources */,
 				64F0618E1D56E21E0019AF85 /* YouTubeTabCount.scpt in Resources */,
 				64352E2F1D315A4E00758185 /* UniversalPause.scpt in Resources */,
-				64D0F1581D6CE5410015F6C1 /* SafariAllowJavaScript (not used).scpt in Resources */,
 				64352E311D315F1D00758185 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

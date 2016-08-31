@@ -6,9 +6,9 @@
 	<true/>
 	<key>com.apple.security.scripting-targets</key>
 	<dict>
-		<key>com.apple.itunes</key>
+		<key>com.apple.iTunes</key>
 		<array>
-			<string>com.apple.itunes.playback</string>
+			<string>com.apple.iTunes.playback</string>
 		</array>
 	</dict>
 	<key>com.apple.security.temporary-exception.apple-events</key>
@@ -17,6 +17,10 @@
 		<string>com.apple.safari</string>
 		<string>com.google.chrome</string>
 		<string>org.videolan.vlc</string>
+	</array>
+	<key>com.apple.security.temporary-exception.mach-lookup.global-name</key>
+	<array>
+		<string>com.apple.universalaccessAuthWarn</string>
 	</array>
 </dict>
 </plist>

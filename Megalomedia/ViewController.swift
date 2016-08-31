@@ -469,4 +469,4 @@ class ViewController: NSViewController {
     }
 }
 
-// TODO: forward and backwards skip, contact information, acknowledgements and legal stuff
+// TODO: forward and backwards skip (future update?), contact information, new logos, cancel button for YouTube switcher
